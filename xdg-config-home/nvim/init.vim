@@ -1,7 +1,7 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
