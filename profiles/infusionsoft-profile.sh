@@ -58,3 +58,7 @@ export PATH=$PATH:/home/tyler/tools/jca
 
 # VisualVM setup
 export PATH=$PATH:/home/tyler/tools/visualvim/bin
+
+# Gradle setup
+export GRADLE_HOME=/home/tyler/tools/gradle
+export PATH=$PATH:/home/tyler/tools/gradle/bin
