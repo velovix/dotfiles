@@ -11,18 +11,18 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local volume_widget = require("volume-widget")
-local brightness_widget = require("brightness-widget")
+--local brightness_widget = require("brightness-widget")
 local touchpad_widget = require("touchpad-widget")
-local battery_widget = require("battery-widget")
+--local battery_widget = require("battery-widget")
 
 -- Load volume control widget
 local volume = volume_widget:new({})
 -- Load brightness control widget
-local brightness = brightness_widget:new({})
+--local brightness = brightness_widget:new({})
 -- Load touchpad control widget
 local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
-local battery = battery_widget:new({})
+--local battery = battery_widget:new({})
 
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/sh/lock-screen.sh")
@@ -56,7 +56,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/xavi/.config/awesome/bismuth/theme.lua")
+beautiful.init("/home/velovix/.config/awesome/lowpoly/theme.lua")
 
 -- Set the default programs
 terminal = "sakura"
@@ -247,8 +247,8 @@ for s = 1, screen.count() do
 	right_layout:add(mytextclock)
 	right_layout:add(touchpad.widget)
 	right_layout:add(volume.widget)
-	right_layout:add(brightness.widget)
-	right_layout:add(battery.widget)
+	--right_layout:add(brightness.widget)
+	--right_layout:add(battery.widget)
 	right_layout:add(mylayoutbox[s])
 
 	-- Now bring it all together (with the tasklist in the middle)
@@ -287,8 +287,8 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
-	awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
-	awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
+	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
 
 	awful.key({ modkey,		   }, "h",   awful.tag.viewprev	   ),
 	awful.key({ modkey,		   }, "l",  awful.tag.viewnext	   ),

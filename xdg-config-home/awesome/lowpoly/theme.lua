@@ -15,7 +15,7 @@ end
 sharedicons   = shared .. "/icons"
 sharedthemes  = shared .. "/themes"
 themes        = config
-themename     = "/bismuth"
+themename     = "/lowpoly"
 if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
        themes = sharedthemes
 end
@@ -23,8 +23,6 @@ themedir      = themes .. themename
 
 wallpaper1    = themes .. themename .. "/background.png"
 wallpaper2    = themes .. themename .. "/background.jpg"
-wallpaper3    = sharedthemes .. "/zenburn/zenburn-background.png"
-wallpaper4    = sharedthemes .. "/default/background.png"
 wpscript      = home .. "/.wallpaper"
 
 if awful.util.file_readable(wallpaper1) then
@@ -33,20 +31,16 @@ elseif awful.util.file_readable(wallpaper2) then
   theme.wallpaper = wallpaper2
 elseif awful.util.file_readable(wpscript) then
   theme.wallpaper_cmd = { "sh " .. wpscript }
-elseif awful.util.file_readable(wallpaper3) then
-  theme.wallpaper = wallpaper3
-else
-  theme.wallpaper = wallpaper4
 end
 --}}}
 
 --theme.font          = "-artwiz-cure-*-r-normal-*-*-*-*-*-*-*-iso8859-1"
 theme.font          = "cure 10"
 
-theme.bg_normal     = "#2e2e2e"
-theme.bg_focus      = "#2e2e2e"
-theme.bg_urgent     = "#2e2e2e"
-theme.bg_minimize   = "#2e2e2e"
+theme.bg_normal     = "#000000"
+theme.bg_focus      = "#000000"
+theme.bg_urgent     = "#000000"
+theme.bg_minimize   = "#000000"
 
 theme.fg_normal     = "#d1d1d1"
 theme.fg_focus      = "#00b7c2"
