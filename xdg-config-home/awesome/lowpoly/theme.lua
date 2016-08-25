@@ -37,10 +37,10 @@ end
 --theme.font          = "-artwiz-cure-*-r-normal-*-*-*-*-*-*-*-iso8859-1"
 theme.font          = "cure 10"
 
-theme.bg_normal     = "#000000"
-theme.bg_focus      = "#000000"
-theme.bg_urgent     = "#000000"
-theme.bg_minimize   = "#000000"
+theme.bg_normal     = "#363d43"
+theme.bg_focus      = "#363d43"
+theme.bg_urgent     = "#363d43"
+theme.bg_minimize   = "#363d43"
 
 theme.fg_normal     = "#d1d1d1"
 theme.fg_focus      = "#00b7c2"

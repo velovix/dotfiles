@@ -25,7 +25,7 @@ local touchpad = touchpad_widget:new({vendor="Creative"})
 --local battery = battery_widget:new({})
 
 -- Start autolock
-awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/sh/lock-screen.sh")
+awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/.config/awesome/lock-screen.sh")
 -- Start compositor
 awful.util.spawn_with_shell("compton --config ~/.config/compton.conf -b")
 
@@ -56,10 +56,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/velovix/.config/awesome/lowpoly/theme.lua")
+beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 
 -- Set the default programs
-terminal = "sakura"
+terminal = "termite"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "nano"
@@ -279,7 +279,7 @@ globalkeys = awful.util.table.join(
 
 	-- Lock key
 	awful.key({}, "F12", function()
-		awful.util.spawn_with_shell("(sh ~/sh/lock-screen.sh) & xset dpms force off")
+		awful.util.spawn_with_shell("(sh ~/.config/awesome/lock-screen.sh) & xset dpms force off")
 	end ),
 
 	-- Volume control keys

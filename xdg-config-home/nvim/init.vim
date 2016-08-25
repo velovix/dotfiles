@@ -19,6 +19,9 @@ inoremap jk <esc>
 " Set up my leader, space
 let mapleader = "\<Space>"
 
+" Disable scratch window when using omnicomplete
+set completeopt-=preview
+
 " Set up leader shortcuts
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
@@ -49,6 +52,7 @@ set foldlevelstart=99
 
 " Theme configuration
 if has("nvim")
+	set termguicolors
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Enable true color by default
 endif
 if has("nvim") || has("gui_running")
