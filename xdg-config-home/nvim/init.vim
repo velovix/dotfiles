@@ -28,9 +28,10 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
-" Quick scrolling
-nnoremap <Leader>j 15j
-nnoremap <Leader>k 15k
+
+" Arrow keys for fast scrolling
+nnoremap <Up> 10k
+nnoremap <Down> 10j
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
