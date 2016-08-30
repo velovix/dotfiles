@@ -21,3 +21,5 @@ antigen bundle robbyrussell/oh-my-zsh plugins/z
 # We're finished making changes
 antigen apply
 
+# Use trash-cli instead of rm
+alias rm=trash
