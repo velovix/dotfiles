@@ -40,7 +40,7 @@ let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Turn on line numbers
-set relativenumber
+"set relativenumber
 set number
 
 " Always allow a few lines before or after the cursor
@@ -67,13 +67,6 @@ set background=dark " Run the dark solarized theme
 if has("nvim")
 	tnoremap <Esc> <C-\><C-n> " Exits the terminal
 end
-
-" Font configuration. The weird rpcnotify thing is for nvim-qt.
-if has("nvim")
-	command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "\<args\>") | let g:Guifont="<args>"
-elseif has("gui_running")
-	set guifont="Hack"
-endif
 
 " Filetype-specific settings
 filetype plugin indent on
