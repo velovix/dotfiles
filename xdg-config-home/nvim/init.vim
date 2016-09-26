@@ -82,9 +82,6 @@ nmap tb :TagbarToggle<CR>
 
 " Airline configuration
 set laststatus=2 " Turn on the status bar at all times
-if has('nvim') || has('gui_running')
-	let g:airline_powerline_fonts=1 " Turn on special powerline font support
-endif
 
 " vim-go configuration
 let g:go_fmt_command = "goimports"
