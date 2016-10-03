@@ -25,7 +25,7 @@ local touchpad = touchpad_widget:new({vendor="Creative"})
 --local battery = battery_widget:new({})
 
 -- Start autolock
-awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/.config/awesome/lock-screen.sh")
+awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
 -- Start compositor
 awful.util.spawn_with_shell("compton --config ~/.config/compton.conf -b")
 
@@ -279,7 +279,7 @@ globalkeys = awful.util.table.join(
 
 	-- Lock key
 	awful.key({}, "F12", function()
-		awful.util.spawn_with_shell("(sh ~/.config/awesome/lock-screen.sh) & xset dpms force off")
+		awful.util.spawn_with_shell("(i3lock -c 000000) & xset dpms force off")
 	end ),
 
 	-- Volume control keys
