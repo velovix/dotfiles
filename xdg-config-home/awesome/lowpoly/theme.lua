@@ -34,8 +34,7 @@ elseif awful.util.file_readable(wpscript) then
 end
 --}}}
 
---theme.font          = "-artwiz-cure-*-r-normal-*-*-*-*-*-*-*-iso8859-1"
-theme.font          = "cure 10"
+theme.font          = "Noto Sans 8"
 
 theme.bg_normal     = "#363d43"
 theme.bg_focus      = "#363d43"
