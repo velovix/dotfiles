@@ -11,3 +11,6 @@ export XDG_DESKTOP_DIR="$HOME/desktop"
 
 # Source the platform-specific profile
 source $HOME/.platform-profile
+
+# Add the shell directory to the path
+export PATH="$PATH:~/sh/"
