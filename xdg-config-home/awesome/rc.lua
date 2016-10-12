@@ -24,6 +24,9 @@ local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
 --local battery = battery_widget:new({})
 
+-- Include lain for more layouts
+local lain = require("lain")
+
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
 -- Start compositor
@@ -103,14 +106,14 @@ end
 local layouts =
 {
 	awful.layout.suit.floating,
-	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
+	lain.layout.uselesstile,
+	lain.layout.uselesstile.left,
+	lain.layout.uselesstile.bottom,
+	lain.layout.uselesstile.top,
+	lain.layout.uselessfair,
+	lain.layout.uselessfair.horizontal,
 	awful.layout.suit.max,
-	awful.layout.suit.magnifier
+	awful.layout.suit.magnifier,
 }
 -- }}}
 
@@ -127,19 +130,10 @@ end
 tags = {}
 for s = 1, screen.count() do
 	tagNames = { "web", "ide", "trm", "img", "stm", "etc" }
-	tagLayouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
+	tagLayouts = { layouts[2], layouts[2], layouts[2], layouts[1], layouts[1], layouts[1] }
 	tags[s] = awful.tag(tagNames, s, tagLayouts)
-	--tags[s] = awful.tag({1, 2, 3, 4, 5, 6, 7, 8, 9}, s, layouts[1])
 end
 -- }}}
-
--- {{{ Menu
--- Create a laucher widget and a main menu
-settingsMenu = {
-	{ "multihead on", "xrandr --output HDMI1 --mode 1680x1050 --right-of LVDS1" },
-	{ "multihead off", "xrandr --output HDMI1 --off" },
-	{ "config", editor_gfx .. " " .. awesome.conffile }
-}
 
 mymainmenu = awful.menu({ items = { { "terminal", terminal },
 									{ "files", filemanager },
@@ -148,7 +142,6 @@ mymainmenu = awful.menu({ items = { { "terminal", terminal },
 									{ "gimp", "gimp" },
 									{ "steam", "steam" },
 									{ "blender", "optirun -b primus blender" },
-									{ "settings", settingsMenu },
 									{ "restart", awesome.restart },
 									{ "quit", awesome.quit }
 								  }
@@ -460,6 +453,8 @@ awful.rules.rules = {
 	  properties = {floating = true} },
 	{ rule = { class = "Pidgin" },
 	  properties = {floating = true} },
+	{ rule = { name = "background audio visualizer" },
+	  properties = {screen = 2, valid = false, opacity = 0.2, skip_taskbar = true, below = true, maximized = true, sticky = true, focusable = false} },
 }
 -- }}}
 
@@ -538,3 +533,4 @@ end)
 
 -- Spawn redshift
 run_once("redshift-gtk")
+
