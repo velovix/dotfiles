@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'klen/python-mode'
 
 call plug#end()
 
@@ -32,6 +33,10 @@ nnoremap <Leader>w <C-w>
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
 nnoremap <Down> 10j
+
+" Turn off Python linting on save
+let g:pymode_lint_write = 0
+let g:pymode_lint = 0
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
