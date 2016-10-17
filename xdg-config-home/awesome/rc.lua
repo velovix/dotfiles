@@ -66,7 +66,7 @@ terminal = "termite"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "nano"
-editor_gfx = "gvim"
+editor_gfx = "nvim-qt"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -443,20 +443,41 @@ awful.rules.rules = {
 	  properties = {floating = true} },
 	{ rule = { instance = "chlffgpmiacpedhhbkiomidkjlcfhogd" },
 	  properties = {floating = true} },
-	{ rule = { class = "Trinosaurs" },
-	  properties = { floating = true } },
 	{ rule = { name = "uArm Creator Dashboard" },
-	  properties = { floating = true } },
-	{ rule = { class = "recordMyDesktop" },
 	  properties = { floating = true } },
 	{ rule = { class = "Git-gui" },
 	  properties = {floating = true} },
-	{ rule = { class = "Pidgin" },
-	  properties = {floating = true} },
 	{ rule = { name = "background audio visualizer" },
-	  properties = {screen = 2, valid = false, opacity = 0.2, skip_taskbar = true, below = true, maximized = true, sticky = true, focusable = false} },
+	  properties = { screen = 2, opacity = 0.2, below = true, maximized = true, sticky = true } },
 }
 -- }}}
+
+-- Ban the audio visualizer from being focused
+do
+	local filter = awful.client.focus.filter
+	awful.client.focus.filter = function(c)
+		--if c.name == "background audio visualizer" then
+			--awful.client.focus.history.delete(c)
+		--end
+		return c.name ~= "background audio visualizer" and filter(c)
+	end
+end
+
+-- Ban the audio visualizer from history
+do
+	local historyGet = awful.client.focus.history.get
+	awful.client.focus.history.get = function(screen, idx)
+		-- Find the audio visualizer 
+		local history = awful.client.data.focus
+		for k, v in ipairs(history) do
+			if v.name == "background audio visualizer" then
+				awful.client.focus.history.delete(v)
+			end
+		end
+
+		return historyGet(screen, idx)
+	end
+end
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -527,10 +548,8 @@ client.connect_signal("manage", function (c, startup)
 	end
 end)
 
---client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
---client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
-
 -- Spawn redshift
 run_once("redshift-gtk")
+-- Spawn the visualizer
+run_once("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
 
