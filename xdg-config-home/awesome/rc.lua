@@ -448,7 +448,7 @@ awful.rules.rules = {
 	{ rule = { class = "Git-gui" },
 	  properties = {floating = true} },
 	{ rule = { name = "background audio visualizer" },
-	  properties = { screen = 2, opacity = 0.2, below = true, maximized = true, sticky = true } },
+	  properties = { opacity = 0.2, behind = true, skip_taskbar = true, maximized = true, sticky = true } },
 }
 -- }}}
 
@@ -478,6 +478,13 @@ do
 		return historyGet(screen, idx)
 	end
 end
+
+--[[awful.ewmh.add_activate_filter(function(c, source)
+	if (source == "autofocus.check_focus" or source == "client.focus.bydirection")
+		and c.name == "background audio visualizer" then
+		return false
+	end
+end)]]--
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -546,10 +553,31 @@ client.connect_signal("manage", function (c, startup)
 
 		awful.titlebar(c):set_widget(layout)
 	end
+
+	placeVisualizers()
 end)
+
+function placeVisualizers()
+	local cnt = 1
+
+	for s = 1, screen.count() do
+		for v, k in ipairs(awful.client.visible(s)) do
+			if k.name == "background audio visualizer" then
+				if cnt <= screen.count() then
+					k.screen = cnt
+					cnt = cnt + 1
+				else
+					naughty.notify({text="warning, too many visualizers"})
+				end
+			end
+		end
+	end
+end
 
 -- Spawn redshift
 run_once("redshift-gtk")
 -- Spawn the visualizer
-run_once("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
+for s = 1, screen.count() do
+	awful.util.spawn_with_shell("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
+end
 

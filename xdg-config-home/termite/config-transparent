@@ -4,7 +4,7 @@ font = Hack 11
 [colors]
 background = rgba(255,255,255,0.0)
 foreground = #EEEEEC
-cursor = #93a1a1
+cursor = rgba(255,255,255,0.0)
 
 # Solarized colors
 color0 = #073642
