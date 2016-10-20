@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'alvan/vim-closetag'
 Plug 'klen/python-mode'
 
 call plug#end()
@@ -40,6 +41,9 @@ let g:pymode_lint = 0
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
+
+" Set up closetag
+let g:closetag_filenames="*.html,*.xml"
 
 " Shortcut for clearing find highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
