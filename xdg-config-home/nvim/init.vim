@@ -33,7 +33,9 @@ nnoremap <Leader>w <C-w>
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
+nnoremap <C-k> 10k
 nnoremap <Down> 10j
+nnoremap <C-j> 10j
 
 " Turn off Python linting on save
 let g:pymode_lint_write = 0
