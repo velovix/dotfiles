@@ -27,3 +27,6 @@ export MAVEN_OPTS='-Xmx2048m -XX:CompileCommand=exclude,com/infusion/databridge/
 # Go setup
 export GOPATH=/home/tyler/go
 
+
+# Set up mysql clients to connect to Docker
+export MYSQL_HOST=127.0.0.1
