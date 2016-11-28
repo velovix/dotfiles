@@ -22,4 +22,6 @@ antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen apply
 
 # Use trash-cli instead of rm
-alias rm=trash
+if hash trash 2>/dev/null; then
+	alias rm=trash
+fi
