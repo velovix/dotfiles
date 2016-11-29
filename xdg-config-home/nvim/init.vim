@@ -10,8 +10,12 @@ Plug 'fatih/vim-go', { 'tag': 'v1.10' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'klen/python-mode'
+Plug 'danro/rename.vim'
 
 call plug#end()
+
+" Filetype-specific settings
+filetype plugin on
 
 syntax on
 
@@ -78,9 +82,6 @@ set background=dark " Run the dark solarized theme
 if has("nvim")
 	tnoremap <Esc> <C-\><C-n> " Exits the terminal
 end
-
-" Filetype-specific settings
-filetype plugin indent on
 
 " LaTeX configuration
 let g:tex_flavor='latex'
