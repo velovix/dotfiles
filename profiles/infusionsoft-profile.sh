@@ -30,3 +30,8 @@ export GOPATH=/home/tyler/go
 
 # Set up mysql clients to connect to Docker
 export MYSQL_HOST=127.0.0.1
+
+# Tell programs where Google Cloud SDK is
+export GOOGLE_CLOUD_SDK_HOME=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+
+alias gw=./gradlew
