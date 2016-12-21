@@ -11,26 +11,44 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local volume_widget = require("volume-widget")
-local brightness_widget = require("brightness-widget")
+--local brightness_widget = require("brightness-widget")
 local touchpad_widget = require("touchpad-widget")
-local battery_widget = require("battery-widget")
+--local battery_widget = require("battery-widget")
 
 -- Load volume control widget
 local volume = volume_widget:new({})
 -- Load brightness control widget
-local brightness = brightness_widget:new({})
+--local brightness = brightness_widget:new({})
 -- Load touchpad control widget
 local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
-local battery = battery_widget:new({})
+--local battery = battery_widget:new({})
 
 -- Include lain for more layouts
 local lain = require("lain")
 
+-- Only run the following command if it isn't already running
+function run_once(cmd)
+	findme = cmd
+	firstspace = cmd:find(" ")
+	if firstspace then
+		findme = cmd:sub(0, firstspace-1)
+	end
+	awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
+-- Run a command synchronously
+function spawn_and_wait(cmd)
+	local prog = io.popen(cmd)
+	local result = prog:read('*all')
+	prog:close()
+	return result
+end
+
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
 -- Start compositor
-awful.util.spawn_with_shell("compton --config ~/.config/compton.conf -b")
+run_once("compton --config ~/.config/compton.conf -b")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -240,8 +258,8 @@ for s = 1, screen.count() do
 	right_layout:add(mytextclock)
 	right_layout:add(touchpad.widget)
 	right_layout:add(volume.widget)
-	right_layout:add(brightness.widget)
-	right_layout:add(battery.widget)
+	--right_layout:add(brightness.widget)
+	--right_layout:add(battery.widget)
 	right_layout:add(mylayoutbox[s])
 
 	-- Now bring it all together (with the tasklist in the middle)
@@ -280,8 +298,8 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
-	awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
-	awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
+	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
 
 	awful.key({ modkey,		   }, "h",   awful.tag.viewprev	   ),
 	awful.key({ modkey,		   }, "l",  awful.tag.viewnext	   ),
@@ -479,13 +497,6 @@ do
 	end
 end
 
---[[awful.ewmh.add_activate_filter(function(c, source)
-	if (source == "autofocus.check_focus" or source == "client.focus.bydirection")
-		and c.name == "background audio visualizer" then
-		return false
-	end
-end)]]--
-
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
@@ -577,7 +588,7 @@ end
 -- Spawn redshift
 run_once("redshift-gtk")
 -- Spawn the visualizer
+spawn_and_wait("pkill -f 'background audio visualizer'")
 for s = 1, screen.count() do
 	awful.util.spawn_with_shell("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
 end
-
