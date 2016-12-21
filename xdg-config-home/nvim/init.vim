@@ -10,6 +10,7 @@ Plug 'fatih/vim-go'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'klen/python-mode'
+Plug 'vim-scripts/paredit.vim'
 
 call plug#end()
 
