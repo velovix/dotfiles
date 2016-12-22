@@ -25,7 +25,7 @@ fi
 export MAVEN_OPTS='-Xmx2048m -XX:CompileCommand=exclude,com/infusion/databridge/MemoryRst,loadMeta'
 
 # Go setup
-export GOPATH=/home/tyler/go
+export GOPATH=/Users/tyler.compton/go
 
 
 # Set up mysql clients to connect to Docker
