@@ -12,6 +12,7 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'klen/python-mode'
 Plug 'danro/rename.vim'
+Plug 'vim-scripts/paredit.vim'
 
 call plug#end()
 
