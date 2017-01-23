@@ -1,4 +1,4 @@
--- citrus, an awesome 3 theme by Tyler Compton
+-- lowpoly, an awesome 3 theme by Tyler Compton
 
 --{{{ Main
 local awful = require("awful")
@@ -59,21 +59,18 @@ theme.taglist_squares_unsel = themedir .. "/taglist/unfocus.png"
 theme.awesome_icon = themedir .. "/awesome-icon.png"
 
 -- Layout icons
-theme.layout_uselessfairh = themedir .. "/layouts/fairh.png"
-theme.layout_uselessfair = themedir .. "/layouts/fairv.png"
+theme.layout_fairh = themedir .. "/layouts/fairh.png"
+theme.layout_fairv = themedir .. "/layouts/fairv.png"
 theme.layout_floating  = themedir .. "/layouts/floating.png"
 theme.layout_magnifier = themedir .. "/layouts/magnifier.png"
 theme.layout_max = themedir .. "/layouts/max.png"
 theme.layout_fullscreen = themedir .. "/layouts/fullscreen.png"
-theme.layout_uselesstilebottom = themedir .. "/layouts/tilebottom.png"
-theme.layout_uselesstileleft   = themedir .. "/layouts/tileleft.png"
-theme.layout_uselesstile = themedir .. "/layouts/tile.png"
-theme.layout_uselesstiletop = themedir .. "/layouts/tiletop.png"
-theme.layout_uselessspiral  = themedir .. "/layouts/spiral.png"
+theme.layout_tilebottom = themedir .. "/layouts/tilebottom.png"
+theme.layout_tileleft   = themedir .. "/layouts/tileleft.png"
+theme.layout_tile = themedir .. "/layouts/tile.png"
+theme.layout_tiletop = themedir .. "/layouts/tiletop.png"
+theme.layout_spiral  = themedir .. "/layouts/spiral.png"
 theme.layout_dwindle = themedir .. "/layouts/dwindle.png"
-
--- Lain window gaps
-theme.useless_gap_width = 10
 
 return theme
 
