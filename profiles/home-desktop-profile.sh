@@ -12,3 +12,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-jdk
 
 # Show where Gradle is installed
 export GOOGLE_CLOUD_SDK_HOME=/opt/google-cloud-sdk
+
+# Set neovim as the default editor
+export EDITOR=nvim
