@@ -7,11 +7,13 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'fatih/vim-go', { 'tag': 'v1.10' }
+Plug 'fatih/vim-go', { 'tag': 'v1.11' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'vim-scripts/paredit.vim'
+Plug 'Shougo/deoplete.vim'
+Plug 'zshee/deoplete-go'
 
 call plug#end()
 
@@ -43,9 +45,8 @@ nnoremap <C-k> 10k
 nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
-" Turn off Python linting on save
-let g:pymode_lint_write = 0
-let g:pymode_lint = 0
+" Configure Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
