@@ -12,8 +12,12 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'vim-scripts/paredit.vim'
+
+" Deoplete plugins
 Plug 'Shougo/deoplete.vim'
-Plug 'zshee/deoplete-go'
+Plug 'zshee/deoplete-go'      " Go support
+Plug 'zchee/deoplete-jedi'    " Python support
+Plug 'Rip-Rip/clang_complete' " C++ support
 
 call plug#end()
 
