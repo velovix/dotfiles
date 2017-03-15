@@ -671,6 +671,13 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+function spawnVisualizers()
+	spawn_and_wait("pkill -f 'background audio visualizer'")
+	for s = 1, screen.count() do
+		awful.util.spawn_with_shell("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
+	end
+end
+
 function placeVisualizers()
 	local cnt = 1
 
@@ -688,14 +695,14 @@ function placeVisualizers()
 	end
 end
 
+function startVisualizers()
+	spawnVisualizers()
+	placeVisualizers()
+end
+
 -- Startup programs
 
 run_once("redshift-gtk")
--- Spawn the visualizers, one per screen
-spawn_and_wait("pkill -f 'background audio visualizer'")
-for s = 1, screen.count() do
-	--awful.util.spawn_with_shell("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
-end
 -- Restart and spawn conky. Restart because Conky behaves weirdly if it
 -- survives a restart
 spawn_and_wait("pkill -f 'conky'")
