@@ -58,6 +58,7 @@ let g:ctrlp_custom_ignore = {
             \ 'link': '',
             \ }
 let g:ctrlp_max_files = 0
+let g:ctrlp_working_path_mode = 'a'
 
 " Set up closetag
 let g:closetag_filenames="*.html,*.xml"
