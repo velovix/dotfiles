@@ -44,9 +44,16 @@ nnoremap <C-k> 10k
 nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
-" Configure Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:clang_library_path='/usr/lib64/libclang.so.3.9'
+" Configure Python's Jedi autocomplete
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_command = ""
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = ""
+let g:jedi#usages_command = ""
+let g:jedi#completions_command = ""
+let g:jedi#rename_command = ""
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
