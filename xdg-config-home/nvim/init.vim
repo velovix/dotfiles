@@ -12,12 +12,7 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'vim-scripts/paredit.vim'
-
-" Deoplete plugins
-Plug 'Shougo/deoplete.vim'
-Plug 'zshee/deoplete-go'      " Go support
-Plug 'zchee/deoplete-jedi'    " Python support
-Plug 'Rip-Rip/clang_complete' " C++ support
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -51,6 +46,7 @@ nnoremap <C-j> 10j
 
 " Configure Deoplete
 let g:deoplete#enable_at_startup = 1
+let g:clang_library_path='/usr/lib64/libclang.so.3.9'
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
