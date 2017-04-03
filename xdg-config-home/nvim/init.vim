@@ -11,7 +11,6 @@ Plug 'fatih/vim-go', { 'tag': 'v1.11' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
-Plug 'vim-scripts/paredit.vim'
 Plug 'davidhalter/jedi-vim'
 
 call plug#end()
