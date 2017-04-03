@@ -104,6 +104,10 @@ set laststatus=2 " Turn on the status bar at all times
 
 " vim-go configuration
 let g:go_fmt_command = "goimports" " Run goimports on save
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " Configure gVim
 if has('gui_running')
