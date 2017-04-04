@@ -2,7 +2,7 @@
 font = Hack 11
 
 [colors]
-background = #2E3436
+background = #002b36
 foreground = #EEEEEC
 cursor = #93a1a1
 
