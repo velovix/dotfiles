@@ -20,6 +20,9 @@ syntax on
 set number
 set scrolloff=10
 
+" Always trust changes on disk
+set autoread
+
 " Filetype-specific settings
 filetype plugin on
 
