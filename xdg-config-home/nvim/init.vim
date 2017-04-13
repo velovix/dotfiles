@@ -5,13 +5,21 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'fatih/vim-go', { 'tag': 'v1.11' }
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'fatih/vim-go', { 'tag': 'v1.12' }
+Plug 'jodosha/vim-godebug'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
-Plug 'davidhalter/jedi-vim'
+
+" Theming
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go'
+" Works great but slows down startup. Re-enable when working on Python.
+"Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
@@ -46,16 +54,9 @@ nnoremap <C-k> 10k
 nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
-" Configure Python's Jedi autocomplete
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_command = ""
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = ""
-let g:jedi#usages_command = ""
-let g:jedi#completions_command = ""
-let g:jedi#rename_command = ""
+" Deoplete setup
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#complete_method = "omnifunc"
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
