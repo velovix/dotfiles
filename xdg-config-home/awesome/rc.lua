@@ -20,7 +20,7 @@ local touchpad_widget = require("touchpad-widget")
 -- {{ Initializing custom widgets
 
 -- Load volume control widget
-local volume = volume_widget:new({})
+--local volume = volume_widget:new({})
 -- Load brightness control widget
 --local brightness = brightness_widget:new({})
 -- Load touchpad control widget
