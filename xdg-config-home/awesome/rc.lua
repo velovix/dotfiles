@@ -330,8 +330,8 @@ globalkeys = awful.util.table.join(
 	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
 	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
 
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    awful.key({ modkey,           }, "s",     function() awful.client.sticky = false end,
+              {description="toggle stickiness", group="tag"}),
     awful.key({ modkey,           }, "h",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "l",  awful.tag.viewnext,
