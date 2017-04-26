@@ -12,7 +12,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Custom widgets
-local volume_widget = require("volume-widget")
+--local volume_widget = require("volume-widget")
 --local brightness_widget = require("brightness-widget")
 local touchpad_widget = require("touchpad-widget")
 --local battery_widget = require("battery-widget")
@@ -289,7 +289,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
 			--touchpad.widget,
-			volume.widget,
+			--volume.widget,
 			--brightness.widget,
 			--battery.widget,
             s.mylayoutbox,
@@ -323,8 +323,8 @@ globalkeys = awful.util.table.join(
 	end ),
 
 	-- Volume control keys
-	awful.key({}, "XF86AudioRaiseVolume", function() volume:up() end ),
-	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
+	--awful.key({}, "XF86AudioRaiseVolume", function() volume:up() end ),
+	--awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
 	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
