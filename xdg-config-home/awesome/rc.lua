@@ -715,3 +715,6 @@ awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
 run_once("compton --config ~/.config/compton.conf -b")
 
 -- }}}
+
+
+run_once("nm-applet")
