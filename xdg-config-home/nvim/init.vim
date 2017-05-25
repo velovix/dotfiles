@@ -19,9 +19,13 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go'
 " Works great but slows down startup. Re-enable when working on Python.
-"Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi'
 
 call plug#end()
+
+# Set up PyLint support
+autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd FileType python set errorformat=%f:%l:\ %m
 
 " Basic configuration
 syntax on
@@ -57,6 +61,10 @@ nnoremap <C-j> 10j
 " Deoplete setup
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#complete_method = "omnifunc"
+inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
+function! s:smart_cr()
+	return deoplete#mappings#smart_close_popup() . "\<CR>"
+endfunction
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
@@ -90,7 +98,7 @@ if has("nvim") || has("gui_running")
 else
     colorscheme desert " Set colorscheme to something sane in case I need to use vim
 end
-set background=dark " Run the dark solarized theme
+set background=light " Run the light solarized theme
 
 " Neovim terminal configuration
 if has("nvim")
