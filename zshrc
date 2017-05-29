@@ -45,3 +45,6 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PD6c71c4" # S_violet
     clear # against bg artifacts
 fi
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
