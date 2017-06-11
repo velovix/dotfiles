@@ -18,12 +18,11 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 " Autocomplete
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go'
-" Works great but slows down startup. Re-enable when working on Python.
 Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
-# Set up PyLint support
+" Set up PyLint support
 autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
 autocmd FileType python set errorformat=%f:%l:\ %m
 
