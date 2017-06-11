@@ -5,7 +5,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go', { 'tag': 'v1.12' }
+Plug 'fatih/vim-go', { 'tag': 'v1.13' }
 Plug 'jodosha/vim-godebug'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
