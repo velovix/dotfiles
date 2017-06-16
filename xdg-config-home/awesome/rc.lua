@@ -14,7 +14,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Custom widgets
 --local volume_widget = require("volume-widget")
 --local brightness_widget = require("brightness-widget")
-local touchpad_widget = require("touchpad-widget")
+--local touchpad_widget = require("touchpad-widget")
 --local battery_widget = require("battery-widget")
 
 -- {{ Initializing custom widgets
@@ -24,7 +24,7 @@ local touchpad_widget = require("touchpad-widget")
 -- Load brightness control widget
 --local brightness = brightness_widget:new({})
 -- Load touchpad control widget
-local touchpad = touchpad_widget:new({vendor="Creative"})
+--local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
 --local battery = battery_widget:new({})
 
@@ -63,7 +63,7 @@ beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+terminal = "konsole"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "nano"
