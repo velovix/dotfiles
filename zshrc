@@ -47,6 +47,6 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
 
 export EDITOR=nvim
