@@ -66,7 +66,7 @@ beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 terminal = "termite"
 filemanager = "pcmanfm"
 browser = "chromium"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "vi"
 editor_gfx = "nvim-qt"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -151,14 +151,7 @@ end
 -- {{{ Menu
 -- @DOC_MENU@
 -- Create a launcher widget and a main menu
-mymainmenu = awful.menu({ items = { { "terminal", terminal },
-									{ "files", filemanager },
-									{ "text", editor_gfx },
-									{ "chromium", "chromium" },
-									{ "gimp", "gimp" },
-									{ "steam", "steam" },
-									{ "blender", "optirun -b primus blender" },
-									{ "restart", awesome.restart },
+mymainmenu = awful.menu({ items = {	{ "restart", awesome.restart },
 									{ "quit", awesome.quit }
 								  }
 						})
