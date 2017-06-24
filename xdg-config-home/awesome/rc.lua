@@ -298,6 +298,8 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+numLockOn = false
+
 -- {{{ Mouse bindings
 -- @DOC_ROOT_BUTTONS@
 root.buttons(awful.util.table.join(
@@ -329,6 +331,17 @@ globalkeys = awful.util.table.join(
 	-- Brightness control keys
 	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
 	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	
+	awful.key({}, "Num_Lock",
+		function()
+			if numLockOn then
+				awful.util.spawn_with_shell("play ~/.config/awesome/num-lock-on.wav")
+			else
+				awful.util.spawn_with_shell("play ~/.config/awesome/num-lock-off.wav")
+			end
+			numLockOn = not numLockOn
+		end,
+		{description="testing", group="client"}),
 
     awful.key({ modkey,           }, "s",     function() awful.client.sticky = false end,
               {description="toggle stickiness", group="tag"}),
