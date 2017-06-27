@@ -1,7 +1,7 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
@@ -51,6 +51,9 @@ nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
 
+" Set up FZF
+nnoremap <Leader>p :FZF<CR>
+
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
 nnoremap <C-k> 10k
@@ -67,15 +70,6 @@ endfunction
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
-
-" ctrlp.vim configuration
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(class|o)$',
-            \ 'link': '',
-            \ }
-let g:ctrlp_max_files = 0
-let g:ctrlp_working_path_mode = 'a'
 
 " Set up closetag
 let g:closetag_filenames="*.html,*.xml"
@@ -119,6 +113,9 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" Enable spellcheck
+set spell spelllang=en_us
 
 " Configure gVim
 if has('gui_running')
