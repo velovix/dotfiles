@@ -66,7 +66,7 @@ beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 terminal = "konsole"
 filemanager = "pcmanfm"
 browser = "chromium"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "vi"
 editor_gfx = "nvim-qt"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -151,14 +151,7 @@ end
 -- {{{ Menu
 -- @DOC_MENU@
 -- Create a launcher widget and a main menu
-mymainmenu = awful.menu({ items = { { "terminal", terminal },
-									{ "files", filemanager },
-									{ "text", editor_gfx },
-									{ "chromium", "chromium" },
-									{ "gimp", "gimp" },
-									{ "steam", "steam" },
-									{ "blender", "optirun -b primus blender" },
-									{ "restart", awesome.restart },
+mymainmenu = awful.menu({ items = {	{ "restart", awesome.restart },
 									{ "quit", awesome.quit }
 								  }
 						})
@@ -298,6 +291,8 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+numLockOn = false
+
 -- {{{ Mouse bindings
 -- @DOC_ROOT_BUTTONS@
 root.buttons(awful.util.table.join(
@@ -329,6 +324,17 @@ globalkeys = awful.util.table.join(
 	-- Brightness control keys
 	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
 	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	
+	awful.key({}, "Num_Lock",
+		function()
+			if numLockOn then
+				awful.util.spawn_with_shell("play ~/.config/awesome/num-lock-on.wav")
+			else
+				awful.util.spawn_with_shell("play ~/.config/awesome/num-lock-off.wav")
+			end
+			numLockOn = not numLockOn
+		end,
+		{description="testing", group="client"}),
 
     awful.key({ modkey,           }, "s",     function() awful.client.sticky = false end,
               {description="toggle stickiness", group="tag"}),
