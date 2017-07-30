@@ -91,7 +91,7 @@ if has("nvim") || has("gui_running")
 else
     colorscheme desert " Set colorscheme to something sane in case I need to use vim
 end
-set background=light " Run the light solarized theme
+set background=dark
 
 " Neovim terminal configuration
 if has("nvim")
