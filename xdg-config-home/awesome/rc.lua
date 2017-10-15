@@ -65,7 +65,7 @@ beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
+terminal = "termite"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "vi"
@@ -710,19 +710,17 @@ end
 
 -- Startup programs
 
+-- Spawn Redshift
 run_once("redshift-gtk")
--- Restart and spawn conky. Restart because Conky behaves weirdly if it
--- survives a restart
-spawn_and_wait("pkill -f 'conky'")
-run_once("conky")
 -- Spawn Slack
 run_once("slack")
+-- Spawn Network Manager
+run_once("nm-applet")
+-- Spawn Blueberry
+run_once("blueberry-tray")
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
 -- Start compositor
 run_once("compton --config ~/.config/compton.conf -b")
 
 -- }}}
-
-
-run_once("nm-applet")
