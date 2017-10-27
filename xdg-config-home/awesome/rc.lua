@@ -12,7 +12,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Custom widgets
-local volume_widget = require("volume-widget")
+--local volume_widget = require("volume-widget")
 --local brightness_widget = require("brightness-widget")
 --local touchpad_widget = require("touchpad-widget")
 --local battery_widget = require("battery-widget")
@@ -20,9 +20,9 @@ local volume_widget = require("volume-widget")
 -- {{ Initializing custom widgets
 
 -- Load volume control widget
-local volume = volume_widget:new({
-    backend="pulseaudio",
-    device="0"})
+--local volume = volume_widget:new({
+    --backend="pulseaudio",
+    --device="0"})
 -- Load brightness control widget
 --local brightness = brightness_widget:new({})
 -- Load touchpad control widget
@@ -239,7 +239,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-	local tagNames = { "web", "ide", "trm", "img", "stm", "etc" }
+	local tagNames = { "1", "2", "3", "4", "5", "6" }
 	awful.tag(tagNames, s, awful.layout.layouts[2])
 	for _, v in pairs(tagNames) do
 		local tag = awful.tag.find_by_name(s, v)
@@ -284,7 +284,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
 			--touchpad.widget,
-			volume.widget,
+			--volume.widget,
 			--brightness.widget,
 			--battery.widget,
             s.mylayoutbox,
