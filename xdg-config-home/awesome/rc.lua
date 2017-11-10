@@ -65,7 +65,7 @@ beautiful.init("~/.config/awesome/lowpoly/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "lxterminal"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "vi"
