@@ -82,10 +82,6 @@ set foldmethod=syntax
 set foldlevelstart=99
 
 " Theme configuration
-if has("nvim")
-    set termguicolors
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Enable true color by default
-endif
 if has("nvim") || has("gui_running")
     colorscheme solarized " Set colorscheme to solarized when true color should be available
 else
