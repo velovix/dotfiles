@@ -1,12 +1,13 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'tag': 'v1.13' }
-Plug 'jodosha/vim-godebug'
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 
@@ -16,15 +17,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go'
-Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 
-" Set up PyLint support
-autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
-autocmd FileType python set errorformat=%f:%l:\ %m
+" Configure langclient
+let g:LanguageClient_serverCommands = {
+	\ 'python': ['pyls'],
+	\}
+let g:LanguageClient_autoStart = 1
 
 " Basic configuration
 syntax on
@@ -112,13 +115,3 @@ let g:go_highlight_build_constraints = 1
 
 " Enable spellcheck
 set spell spelllang=en_us
-
-" Configure gVim
-if has('gui_running')
-    " Remove gvim graphical elements
-    set guioptions-=m
-    set guioptions-=t
-    set guioptions-=T
-    set guioptions-=L
-    set guioptions-=r
-endif
