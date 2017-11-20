@@ -10,6 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'tag': 'v1.13' }
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Theming
 Plug 'vim-airline/vim-airline'
