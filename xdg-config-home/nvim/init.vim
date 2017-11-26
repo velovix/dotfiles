@@ -11,6 +11,7 @@ Plug 'fatih/vim-go', { 'tag': 'v1.13' }
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'mileszs/ack.vim'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -34,6 +35,11 @@ let g:LanguageClient_autoStart = 1
 syntax on
 set number
 set scrolloff=10
+
+" Set up The Silver Searcher
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
 
 " Always trust changes on disk
 set autoread
