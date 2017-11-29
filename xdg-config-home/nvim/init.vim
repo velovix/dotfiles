@@ -12,6 +12,7 @@ Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
+Plug 'rust-lang/rust.vim'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -28,6 +29,7 @@ call plug#end()
 " Configure langclient
 let g:LanguageClient_serverCommands = {
 	\ 'python': ['pyls'],
+	\ 'rust': ['rls'],
 	\}
 let g:LanguageClient_autoStart = 1
 
@@ -77,6 +79,8 @@ inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
 function! s:smart_cr()
 	return deoplete#mappings#smart_close_popup() . "\<CR>"
 endfunction
+set shortmess+=c " Makes Omnicomplete quiet in the status bar
+set noshowmode
 
 " Netrw configuration
 let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
