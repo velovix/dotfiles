@@ -32,9 +32,11 @@ let g:LanguageClient_serverCommands = {
 	\ 'rust': ['rls'],
 	\}
 let g:LanguageClient_autoStart = 1
+let g:LanguageClient_selectionUI = "location-list"
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-command LSRename :call LanguageClient_textDocument_rename()<CR>
+command lcrename :call LanguageClient_textDocument_rename()<CR>
+command lcrefs :call LanguageClient_textDocument_references()<CR>
 
 " Basic configuration
 syntax on
