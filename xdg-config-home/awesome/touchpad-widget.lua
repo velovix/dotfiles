@@ -1,1 +1,0 @@
-/home/velovix/.config/awesome/awesome.touchpad-widget/touchpad-widget.lua

@@ -1,1 +1,0 @@
-/home/velovix/.config/awesome/awesome.volume-widget/volume-widget.lua

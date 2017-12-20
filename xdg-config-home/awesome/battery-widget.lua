@@ -1,1 +1,0 @@
-/home/velovix/.config/awesome/awesome.battery-widget/battery-widget.lua

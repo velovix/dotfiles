@@ -1,1 +1,0 @@
-/home/velovix/.config/awesome/awesome.brightness-widget/brightness-widget.lua
