@@ -21,6 +21,9 @@ antigen bundle robbyrussell/oh-my-zsh plugins/z
 # We're finished making changes
 antigen apply
 
+# Turn on direnv
+eval "$(direnv hook zsh)"
+
 # Use trash-cli instead of rm
 if hash trash 2>/dev/null; then
 	alias rm=trash
