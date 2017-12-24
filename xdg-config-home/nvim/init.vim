@@ -17,7 +17,7 @@ Plug 'rust-lang/rust.vim'
 " Theming
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'altercation/vim-colors-solarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
