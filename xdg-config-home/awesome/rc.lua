@@ -311,7 +311,8 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "Print", function()
 		date = os.date("*t", os.time())
 		name = date["month"].."-"..date["day"].."-"..date["year"].."_"..date["hour"]..":"..date["min"]..":"..date["sec"]
-		awful.util.spawn_with_shell("import -window root -quality 100 ~/Screenshot" .. name .. ".png")
+		awful.util.spawn_with_shell("mkdir -p ~/Screenshots")
+		awful.util.spawn_with_shell("import -window root -quality 100 ~/Screenshots/Screenshot" .. name .. ".png")
 	end ),
 
 	-- Lock key
