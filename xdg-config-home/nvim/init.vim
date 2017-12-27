@@ -17,7 +17,7 @@ Plug 'rust-lang/rust.vim'
 " Theming
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -102,7 +102,7 @@ set foldlevelstart=99
 
 " Theme configuration
 if has("nvim") || has("gui_running")
-    colorscheme solarized " Set colorscheme to solarized when true color should be available
+    colorscheme NeoSolarized " Set colorscheme to solarized when true color should be available
 else
     colorscheme desert " Set colorscheme to something sane in case I need to use vim
 end
