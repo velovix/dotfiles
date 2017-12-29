@@ -1,3 +1,17 @@
+mkdir -p ~/sh
+
+# Install antigen if necessary
+if [ ! -d ~/sh/antigen ]; then
+	echo "Installing antigen..."
+	git clone https://github.com/zsh-users/antigen ~/sh/antigen
+fi
+
+# Install z if necessary
+if [ ! -d ~/sh/z ]; then
+	echo "Installing z..."
+	git clone https://github.com/rupa/z ~/sh/z
+fi
+
 # Turn on antigen
 source ~/sh/antigen/antigen.zsh
 
@@ -22,11 +36,17 @@ antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen apply
 
 # Turn on direnv
-eval "$(direnv hook zsh)"
+if hash direnv 2>/dev/null; then
+	eval "$(direnv hook zsh)"
+else
+	echo "Warning: direnv is not installed"
+fi
 
 # Use trash-cli instead of rm
 if hash trash 2>/dev/null; then
 	alias rm=trash
+else
+	echo "Warning: trash-cli is not installed"
 fi
 
 if [ "$TERM" = "linux" ]; then
@@ -50,8 +70,20 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source virtualenvwrapper.sh
+if hash virtualenvwrapper.sh 2>/dev/null; then
+	source virtualenvwrapper.sh
+else
+	echo "Warning: virtualenvwrapper is not installed"
+fi
 
-export EDITOR=nvim
+if hash nvim 2>/dev/null; then
+	export EDITOR=nvim
+else
+	export EDITOR=vi
+fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ]; then
+	source ~/.fzf.zsh
+else
+	echo "Warning: fzf is not installed"
+fi
