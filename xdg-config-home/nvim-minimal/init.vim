@@ -1,8 +1,6 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
@@ -17,26 +15,9 @@ Plug 'rust-lang/rust.vim'
 " Theming
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'icymind/NeoSolarized'
-
-" Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go'
-Plug 'Shougo/echodoc.vim'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
-
-" Configure langclient
-let g:LanguageClient_serverCommands = {
-	\ 'python': ['pyls'],
-	\ 'rust': ['rls'],
-	\}
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_selectionUI = "location-list"
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-command LCrename :call LanguageClient_textDocument_rename()<CR>
-command LCrefs :call LanguageClient_textDocument_references()<CR>
 
 " Basic configuration
 syntax on
@@ -77,14 +58,6 @@ nnoremap <C-k> 10k
 nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
-" Deoplete setup
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = "omnifunc"
-inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
-function! s:smart_cr()
-	return deoplete#mappings#smart_close_popup() . "\<CR>"
-endfunction
-set shortmess+=c " Makes Omnicomplete quiet in the status bar
 set noshowmode
 
 " Netrw configuration
@@ -101,11 +74,7 @@ set foldmethod=syntax
 set foldlevelstart=99
 
 " Theme configuration
-if has("nvim") || has("gui_running")
-    colorscheme NeoSolarized " Set colorscheme to solarized when true color should be available
-else
-    colorscheme desert " Set colorscheme to something sane in case I need to use vim
-end
+colorscheme solarized " Set colorscheme to something sane in case I need to use vim
 set background=dark
 
 " Neovim terminal configuration
@@ -129,5 +98,3 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-" Enable spellcheck
-set spell spelllang=en_us
