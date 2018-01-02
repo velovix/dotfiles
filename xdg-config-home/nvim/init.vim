@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
@@ -13,6 +12,12 @@ Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'rust-lang/rust.vim'
+
+" Denite
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" Emoji support (very important)
+Plug 'junegunn/vim-emoji'
+Plug 'pocari/vim-denite-emoji'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -68,8 +73,10 @@ nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
 
-" Set up FZF
-nnoremap <Leader>p :FZF<CR>
+" Set up Denite
+nnoremap <Leader>p :Denite file_rec<CR>
+nnoremap <Leader>b :Denite buffer<CR>
+nnoremap <Leader>d :Denite decls<CR>
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
