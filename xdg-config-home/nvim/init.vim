@@ -12,6 +12,7 @@ Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'LnL7/vim-nix'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }

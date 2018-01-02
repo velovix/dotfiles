@@ -81,9 +81,3 @@ if hash nvim 2>/dev/null; then
 else
 	export EDITOR=vi
 fi
-
-if [ -f ~/.fzf.zsh ]; then
-	source ~/.fzf.zsh
-else
-	echo "Warning: fzf is not installed"
-fi
