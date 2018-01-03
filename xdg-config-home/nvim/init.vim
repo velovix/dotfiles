@@ -78,6 +78,16 @@ nnoremap <Leader>w <C-w>
 nnoremap <Leader>p :Denite file_rec<CR>
 nnoremap <Leader>b :Denite buffer<CR>
 nnoremap <Leader>d :Denite decls<CR>
+call denite#custom#map(
+    \ 'insert',
+    \ '<Down>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap')
+call denite#custom#map(
+    \ 'insert',
+    \ '<Up>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap')
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
