@@ -49,7 +49,7 @@ syntax on
 set number
 set scrolloff=10
 
-" Set up The Silver Searcher
+" Set up Ack
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
@@ -73,11 +73,12 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
-
-" Set up Denite
+nnoremap <Leader>f :Ack!<Space>
 nnoremap <Leader>p :Denite file_rec<CR>
 nnoremap <Leader>b :Denite buffer<CR>
 nnoremap <Leader>d :Denite decls<CR>
+
+" Set up Denite
 call denite#custom#map(
     \ 'insert',
     \ '<Down>',
@@ -88,6 +89,9 @@ call denite#custom#map(
     \ '<Up>',
     \ '<denite:move_to_previous_line>',
     \ 'noremap')
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min*', 'img/', 'fonts/'])
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
