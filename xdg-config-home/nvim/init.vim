@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
@@ -14,6 +13,12 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
+
+" Denite
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" Emoji support (very important)
+Plug 'junegunn/vim-emoji'
+Plug 'pocari/vim-denite-emoji'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -44,7 +49,7 @@ syntax on
 set number
 set scrolloff=10
 
-" Set up The Silver Searcher
+" Set up Ack
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
@@ -68,9 +73,25 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
+nnoremap <Leader>f :Ack!<Space>
+nnoremap <Leader>p :Denite file_rec<CR>
+nnoremap <Leader>b :Denite buffer<CR>
+nnoremap <Leader>d :Denite decls<CR>
 
-" Set up FZF
-nnoremap <Leader>p :FZF<CR>
+" Set up Denite
+call denite#custom#map(
+    \ 'insert',
+    \ '<Down>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap')
+call denite#custom#map(
+    \ 'insert',
+    \ '<Up>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap')
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min*', 'img/', 'fonts/'])
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
