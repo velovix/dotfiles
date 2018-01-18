@@ -44,6 +44,9 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 command LCrename :call LanguageClient_textDocument_rename()<CR>
 command LCrefs :call LanguageClient_textDocument_references()<CR>
 
+" Turn off guicursor in terminal
+set guicursor=
+
 " Basic configuration
 syntax on
 set number
