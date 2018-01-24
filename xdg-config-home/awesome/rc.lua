@@ -163,6 +163,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- Turn off this setting to make menubar faster. Note that this might be fixed
+-- in a later release
+menubar.menu_gen.lookup_category_icons = function() end
 -- }}}
 
 -- Keyboard map indicator and switcher
@@ -712,7 +715,7 @@ end
 -- Startup programs
 
 -- Spawn Redshift
-run_once("redshift-gtk")
+run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack
 run_once("slack")
 -- Spawn Network Manager
