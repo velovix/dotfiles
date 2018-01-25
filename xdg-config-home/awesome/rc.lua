@@ -310,9 +310,9 @@ globalkeys = awful.util.table.join(
 	-- Print the screen using imagemagick import
 	awful.key({}, "Print", function()
 		date = os.date("*t", os.time())
-		name = date["month"].."-"..date["day"].."-"..date["year"].."_"..date["hour"]..":"..date["min"]..":"..date["sec"]
+		name = date["year"].."-"..date["month"].."-"..date["day"].."_"..date["hour"]..":"..date["min"]..":"..date["sec"]
 		awful.util.spawn_with_shell("mkdir -p ~/Screenshots")
-		awful.util.spawn_with_shell("import -window root -quality 100 ~/Screenshots/Screenshot" .. name .. ".png")
+		awful.util.spawn_with_shell("sleep 0.5; scrot 'Screenshots/" .. name .. ".png' -s")
 	end ),
 
 	-- Lock key
