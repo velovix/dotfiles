@@ -69,7 +69,7 @@ if [ "$TERM" = "linux" ]; then
     clear # against bg artifacts
 fi
 
-export VIRTUALENVWRAPPER_PYTHON=python3
+export VIRTUALENVWRAPPER_PYTHON=$(whereis python3)
 if hash virtualenvwrapper.sh 2>/dev/null; then
 	source virtualenvwrapper.sh
 else
