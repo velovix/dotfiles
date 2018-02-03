@@ -40,14 +40,14 @@ theme.bg_focus      = "#000000"
 theme.bg_urgent     = "#000000"
 theme.bg_minimize   = "#00000"
 
-theme.fg_normal     = "#052F52"
-theme.fg_focus      = "#246E86"
+theme.fg_normal     = "#246E86"
+theme.fg_focus      = "#52B0BC"
 theme.fg_urgent     = "#fc736d"
-theme.fg_minimize   = "#052F52"
+theme.fg_minimize   = "#246E86"
 
 theme.border_width  = "4"
-theme.border_normal = "#052F52FF"
-theme.border_focus  = "#246E86FF"
+theme.border_normal = "#246E86"
+theme.border_focus  = "#52B0BC"
 theme.border_marked = "#052F52FF"
 
 -- Display the taglist squares

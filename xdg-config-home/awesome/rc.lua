@@ -13,7 +13,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Custom widgets
 local volume_widget = require("volume-widget")
---local brightness_widget = require("brightness-widget")
+local brightness_widget = require("brightness-widget")
 --local touchpad_widget = require("touchpad-widget")
 --local battery_widget = require("battery-widget")
 
@@ -24,7 +24,7 @@ local volume = volume_widget:new({
     backend="pulseaudio",
     device="0"})
 -- Load brightness control widget
---local brightness = brightness_widget:new({})
+local brightness = brightness_widget:new({})
 -- Load touchpad control widget
 --local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
@@ -61,7 +61,7 @@ end
 -- {{{ Variable definitions
 -- @DOC_LOAD_THEME@
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/lowpoly/theme.lua")
+beautiful.init("~/.config/awesome/small-memory/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
@@ -246,8 +246,8 @@ awful.screen.connect_for_each_screen(function(s)
 	awful.tag(tagNames, s, awful.layout.layouts[2])
 	for _, v in pairs(tagNames) do
 		local tag = awful.tag.find_by_name(s, v)
-		tag.gap = 8 
-		tag.gap_single_client = false
+		tag.gap = 25
+		tag.gap_single_client = true
 	end
 
     -- Create a promptbox for each screen
@@ -270,6 +270,18 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+	-- Set up right widgets
+	rightWidgets = {
+		layout = wibox.layout.fixed.horizontal,
+		mykeyboardlayout,
+		wibox.widget.systray(),
+		mytextclock,
+		volume.widget,
+	}
+	if brightness_widget:isXBacklightInstalled() then
+		table.insert(rightWidgets, brightness)
+	end
+
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -288,7 +300,7 @@ awful.screen.connect_for_each_screen(function(s)
             mytextclock,
 			--touchpad.widget,
 			volume.widget,
-			--brightness.widget,
+			brightness.widget,
 			--battery.widget,
             s.mylayoutbox,
         },
@@ -328,8 +340,8 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
-	--awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
-	--awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
+	awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
 	
 	awful.key({}, "Num_Lock",
 		function()

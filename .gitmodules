@@ -2,3 +2,7 @@
 	path = xdg-config-home/awesome/awesome.volume-widget
 	url = git@github.com:velovix/awesome.volume-widget.git
 	branch = master
+[submodule "xdg-config-home/awesome/awesome.brightness-widget"]
+	path = xdg-config-home/awesome/awesome.brightness-widget
+	url = git@github.com:velovix/awesome.brightness-widget.git
+	branch = master
