@@ -1,1 +1,0 @@
-/home/tyler/dotfiles/xdg-config-home/awesome/awesome.brightness-widget/brightness-widget.lua

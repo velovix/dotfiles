@@ -1,1 +1,0 @@
-/home/tyler/dotfiles/xdg-config-home/awesome/awesome.volume-widget/volume-widget.lua
