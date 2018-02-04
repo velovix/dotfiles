@@ -24,7 +24,9 @@ local volume = volume_widget:new({
     backend="pulseaudio",
     device="0"})
 -- Load brightness control widget
-local brightness = brightness_widget:new({})
+if brightness_widget:isXBacklightInstalled() then
+	local brightness = brightness_widget:new({})
+end
 -- Load touchpad control widget
 --local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
