@@ -293,17 +293,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-			--touchpad.widget,
-			volume.widget,
-			brightness.widget,
-			--battery.widget,
-            s.mylayoutbox,
-        },
+		rightWidgets,
     }
 end)
 -- }}}
