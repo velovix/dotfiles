@@ -248,7 +248,7 @@ awful.screen.connect_for_each_screen(function(s)
 	awful.tag(tagNames, s, awful.layout.layouts[2])
 	for _, v in pairs(tagNames) do
 		local tag = awful.tag.find_by_name(s, v)
-		tag.gap = 25
+		tag.gap = 15
 		tag.gap_single_client = true
 	end
 
