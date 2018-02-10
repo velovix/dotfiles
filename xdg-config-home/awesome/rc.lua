@@ -27,6 +27,7 @@ local volume = volume_widget:new({
 if brightness_widget:isXBacklightInstalled() then
 	local brightness = brightness_widget:new({})
 end
+
 -- Load touchpad control widget
 --local touchpad = touchpad_widget:new({vendor="Creative"})
 -- Load battery control widget
@@ -332,8 +333,16 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
-	awful.key({}, "XF86MonBrightnessDown", function() brightness:down() end),
-	awful.key({}, "XF86MonBrightnessUp", function() brightness:up() end),
+	awful.key({}, "XF86MonBrightnessDown", function()
+		if brightness_widget:isXBacklightInstalled() then
+			brightness:down()
+		end
+	end),
+	awful.key({}, "XF86MonBrightnessUp", function()
+		if brightness_widget:isXBacklightInstalled() then
+			brightness:up()
+		end
+	end),
 	
 	awful.key({}, "Num_Lock",
 		function()
