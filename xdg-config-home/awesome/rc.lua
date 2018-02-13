@@ -727,6 +727,8 @@ end
 
 -- Startup programs
 
+-- Spawn my monitor background checker
+awful.util.spawn_with_shell("systemctl --user start monitor-background-checker.service")
 -- Spawn Redshift
 run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack
