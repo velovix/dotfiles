@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
     ];
-
   # Sandboxing helps ensure reproducible builds
   nix.useSandbox = true;
 
@@ -66,12 +65,31 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget neovim neovim-qt awesome git chromium termite pavucontrol zsh hexchat
-    silver-searcher trash-cli direnv python36Packages.virtualenvwrapper fzf
-    hack-font gimp lxappearance redshift arc-theme paper-icon-theme compton
-    android-studio androidsdk blender lxterminal slack i3lock viewnior
-    lxmenu-data xfce.tumbler imagemagick unity3d vlc arandr
+    # Command line tools
+    kitty zsh fzf direnv trash-cli silver-searcher git wget python3
+    python36Packages.virtualenv python36Packages.pip neovim androidsdk
+
+    # Applications
+    chromium pavucontrol hexchat gimp redshift unity3d android-studio slack
+    blender viewnior neovim-qt vlc
+
+    # Desktop
+    arc-theme lxappearance paper-icon-theme compton awesome i3lock arandr
+    lxmenu-data
   ];
+
+  fonts = {
+    fonts = with pkgs; [
+      hack-font noto-fonts noto-fonts-cjk noto-fonts-emoji
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Noto Mono" ];
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -90,9 +108,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
