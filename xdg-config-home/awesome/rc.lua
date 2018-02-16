@@ -450,7 +450,7 @@ globalkeys = awful.util.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show drun") end,
               {description = "show the menubar", group = "launcher"})
 )
 
