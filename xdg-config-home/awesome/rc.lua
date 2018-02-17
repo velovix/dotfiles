@@ -450,7 +450,7 @@ globalkeys = awful.util.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show drun") end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -727,6 +727,8 @@ end
 
 -- Startup programs
 
+-- Spawn my monitor background checker
+awful.util.spawn_with_shell("systemctl --user start monitor-background-checker.service")
 -- Spawn Redshift
 run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack

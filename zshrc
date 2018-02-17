@@ -69,7 +69,7 @@ if [ "$TERM" = "linux" ]; then
     clear # against bg artifacts
 fi
 
-export VIRTUALENVWRAPPER_PYTHON=$(whereis python3)
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 if hash virtualenvwrapper.sh 2>/dev/null; then
 	source virtualenvwrapper.sh
 else
@@ -82,4 +82,8 @@ if hash nvim 2>/dev/null; then
 	export EDITOR=nvim
 else
 	export EDITOR=vi
+fi
+
+if [ -d "/usr/local/cuda/lib64" ]; then
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 fi

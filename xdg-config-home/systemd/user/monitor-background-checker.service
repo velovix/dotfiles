@@ -1,0 +1,11 @@
+[Unit]
+Description=Sets up monitors when they're connected or disconnected
+After=graphical.target
+
+[Service]
+Type=simple
+ExecStart=%h/sh/monitor-background-checker.bash
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
