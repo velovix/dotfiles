@@ -71,11 +71,11 @@
 
     # Applications
     chromium pavucontrol hexchat gimp redshift unity3d android-studio slack
-    blender viewnior neovim-qt vlc
+    blender viewnior neovim-qt vlc meld
 
     # Desktop
     arc-theme lxappearance paper-icon-theme compton awesome i3lock arandr
-    lxmenu-data
+    lxmenu-data rofi
   ];
 
   fonts = {
