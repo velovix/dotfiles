@@ -113,7 +113,7 @@ set shortmess+=c " Makes Omnicomplete quiet in the status bar
 set noshowmode
 
 " Netrw configuration
-let g:netrw_list_hide='.*\.class$' " Have netrw hide class files
+let g:netrw_list_hide='.*\.class$,.*\.meta$' " Have netrw hide class files
 
 " Set up closetag
 let g:closetag_filenames="*.html,*.xml"
