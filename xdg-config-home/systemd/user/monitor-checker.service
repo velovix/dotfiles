@@ -3,9 +3,8 @@ Description=Sets up monitors when they're connected or disconnected
 After=graphical.target
 
 [Service]
-Type=simple
-ExecStart=%h/sh/monitor-background-checker.bash
-Restart=on-abort
+Type=oneshot
+ExecStart=%h/sh/monitor-checker.bash
 
 [Install]
 WantedBy=multi-user.target
