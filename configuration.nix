@@ -75,7 +75,7 @@
 
     # Desktop
     arc-theme lxappearance paper-icon-theme compton awesome i3lock arandr
-    lxmenu-data
+    lxmenu-data i3lock-color
   ];
 
   fonts = {
