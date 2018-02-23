@@ -325,7 +325,7 @@ globalkeys = awful.util.table.join(
 
 	-- Lock key
 	awful.key({}, "F12", function()
-		awful.util.spawn_with_shell("(i3lock -c 000000) & xset dpms force off")
+		awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh)")
 	end ),
 
 	-- Volume control keys
@@ -728,7 +728,7 @@ end
 -- Startup programs
 
 -- Spawn my monitor background checker
-awful.util.spawn_with_shell("systemctl --user start monitor-background-checker.service")
+awful.util.spawn_with_shell("systemctl --user start monitor-checker.service")
 -- Spawn Redshift
 run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack
