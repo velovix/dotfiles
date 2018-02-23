@@ -67,11 +67,11 @@
   environment.systemPackages = with pkgs; [
     # Command line tools
     kitty zsh fzf direnv trash-cli silver-searcher git wget python3
-    python36Packages.virtualenv python36Packages.pip neovim androidsdk
+    python36Packages.virtualenv python36Packages.pip neovim androidsdk go htop
 
     # Applications
     chromium pavucontrol hexchat gimp redshift unity3d android-studio slack
-    blender viewnior neovim-qt vlc meld
+    blender viewnior neovim-qt vlc meld libreoffice audacity
 
     # Desktop
     arc-theme lxappearance paper-icon-theme compton awesome i3lock arandr
