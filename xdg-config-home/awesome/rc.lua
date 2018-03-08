@@ -451,7 +451,10 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show drun") end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+	-- Emoji picker
+	awful.key({ modkey }, "e", function() awful.util.spawn_with_shell("bash dotfiles/sh/rofi-emoji.sh") end,
+		      {description = "brings up an emoji picker", group = "extra"})
 )
 
 -- @DOC_CLIENT_KEYBINDINGS@
