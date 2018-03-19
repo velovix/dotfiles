@@ -68,7 +68,7 @@ beautiful.init("~/.config/awesome/small-memory/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "lxterminal"
+terminal = "kitty"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "vi"
@@ -738,7 +738,7 @@ run_once("nm-applet")
 -- Spawn Blueberry
 run_once("blueberry-tray")
 -- Start autolock
-awful.util.spawn_with_shell("xautolock -time 10 -locker i3lock -c 000000")
+awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
 run_once("compton --config ~/.config/compton.conf -b")
 
