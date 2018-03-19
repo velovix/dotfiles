@@ -67,15 +67,21 @@
   environment.systemPackages = with pkgs; [
     # Command line tools
     kitty zsh fzf direnv trash-cli silver-searcher git wget python3
-    python36Packages.virtualenv python36Packages.pip neovim androidsdk go htop
+    python36Packages.virtualenv python36Packages.pip androidsdk go htop
 
     # Applications
     chromium pavucontrol hexchat gimp redshift unity3d android-studio slack
-    blender viewnior neovim-qt vlc meld libreoffice audacity
+    blender viewnior vlc meld libreoffice audacity
 
     # Desktop
-    arc-theme lxappearance paper-icon-theme compton awesome i3lock arandr
+    arc-theme lxappearance paper-icon-theme compton awesome arandr
     lxmenu-data rofi i3lock-color
+
+    # Allegedly fixes XML errors in Qt apps
+    libsForQt5.kxmlgui
+
+    # Etc
+    ntfs3g
   ];
 
   fonts = {
