@@ -76,7 +76,7 @@ else
 	echo "Warning: virtualenvwrapper is not installed"
 fi
 
-alias dd=dd status=progress
+alias dd="dd status=progress"
 
 if hash nvim 2>/dev/null; then
 	export EDITOR=nvim
