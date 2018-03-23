@@ -76,7 +76,7 @@ else
 	echo "Warning: virtualenvwrapper is not installed"
 fi
 
-alias dd=dd status=progress
+alias dd="dd status=progress"
 
 if hash nvim 2>/dev/null; then
 	export EDITOR=nvim
@@ -87,3 +87,5 @@ fi
 if [ -d "/usr/local/cuda/lib64" ]; then
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 fi
+
+export PATH=$PATH:~/go/bin

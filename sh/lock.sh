@@ -7,7 +7,13 @@ T='#52B0BBbb'  # text
 W='#52B0BBbb'  # wrong
 V='#52B0BBbb'  # verifying
 
-i3lock \
+if hash i3lock-color 2>/dev/null; then
+	export I3LOCK_COMMAND=i3lock-color
+else
+	export I3LOCK_COMMAND=i3lock
+fi
+
+$I3LOCK_COMMAND \
 	--insidevercolor=$C   \
 	--ringvercolor=$V     \
 	\
