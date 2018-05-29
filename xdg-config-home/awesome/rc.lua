@@ -12,17 +12,12 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Custom widgets
-local volume_widget = require("volume-widget")
 local brightness_widget = require("brightness-widget")
 --local touchpad_widget = require("touchpad-widget")
 --local battery_widget = require("battery-widget")
 
 -- {{ Initializing custom widgets
 
--- Load volume control widget
-local volume = volume_widget:new({
-    backend="pulseaudio",
-    device="0"})
 -- Load brightness control widget
 if brightness_widget:isXBacklightInstalled() then
 	local brightness = brightness_widget:new({})
@@ -279,7 +274,6 @@ awful.screen.connect_for_each_screen(function(s)
 		mykeyboardlayout,
 		wibox.widget.systray(),
 		mytextclock,
-		volume.widget,
 	}
 	if brightness_widget:isXBacklightInstalled() then
 		table.insert(rightWidgets, brightness)
@@ -327,10 +321,6 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "F12", function()
 		awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh)")
 	end ),
-
-	-- Volume control keys
-	awful.key({}, "XF86AudioRaiseVolume", function() volume:up() end ),
-	awful.key({}, "XF86AudioLowerVolume", function() volume:down() end ),
 
 	-- Brightness control keys
 	awful.key({}, "XF86MonBrightnessDown", function()
@@ -745,6 +735,8 @@ run_once("slack")
 run_once("nm-applet")
 -- Spawn Blueberry
 run_once("blueberry-tray")
+-- Start pasystray
+run_once("pasystray")
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
