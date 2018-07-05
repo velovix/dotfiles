@@ -312,11 +312,11 @@ globalkeys = awful.util.table.join(
 
 	-- Volume control keys
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ +10%")
+		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%")
 	end),
 
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -10%")
+		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -5%")
 	end),
 	
 	awful.key({}, "Num_Lock",
