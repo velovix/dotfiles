@@ -66,6 +66,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/small-memory/theme.lua")
 
+-- Fix bug with large notifications
+-- TODO(velovix): Use this when Awesome 4.3 is out
+--beautiful.notification_icon_size = 32
+naughty.config.defaults['icon_size'] = 50
+
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -742,7 +747,7 @@ run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack
 run_once("slack")
 -- Spawn Network Manager
-run_once("nm-applet")
+run_once("sleep 2 && nm-applet")
 -- Spawn Blueberry
 run_once("blueberry-tray")
 -- Start autolock
