@@ -11,22 +11,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
--- Custom widgets
-local brightness_widget = require("brightness-widget")
---local touchpad_widget = require("touchpad-widget")
---local battery_widget = require("battery-widget")
 
 -- {{ Initializing custom widgets
-
--- Load brightness control widget
-if brightness_widget:isXBacklightInstalled() then
-	local brightness = brightness_widget:new({})
-end
-
--- Load touchpad control widget
---local touchpad = touchpad_widget:new({vendor="Creative"})
--- Load battery control widget
---local battery = battery_widget:new({})
 
 -- }}
 
@@ -59,11 +45,11 @@ end
 -- {{{ Variable definitions
 -- @DOC_LOAD_THEME@
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/small-memory/theme.lua")
+beautiful.init("~/.config/awesome/paperlike/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "lxterminal"
 filemanager = "pcmanfm"
 browser = "chromium"
 editor = os.getenv("EDITOR") or "vi"
@@ -275,9 +261,6 @@ awful.screen.connect_for_each_screen(function(s)
 		wibox.widget.systray(),
 		mytextclock,
 	}
-	if brightness_widget:isXBacklightInstalled() then
-		table.insert(rightWidgets, brightness)
-	end
 
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
@@ -322,16 +305,13 @@ globalkeys = awful.util.table.join(
 		awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh)")
 	end ),
 
-	-- Brightness control keys
-	awful.key({}, "XF86MonBrightnessDown", function()
-		if brightness_widget:isXBacklightInstalled() then
-			brightness:down()
-		end
+	-- Volume control keys
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ +10%")
 	end),
-	awful.key({}, "XF86MonBrightnessUp", function()
-		if brightness_widget:isXBacklightInstalled() then
-			brightness:up()
-		end
+
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -10%")
 	end),
 	
 	awful.key({}, "Num_Lock",
