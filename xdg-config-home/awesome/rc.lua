@@ -88,18 +88,6 @@ function spawn_and_wait(cmd)
 	return result
 end
 
--- Touchpad control
-touchpadEnabled = false
-function toggleTouchpad()
-	if touchpadEnabled then
-		touchpadEnabled = false
-		return "synclient touchpadoff=1"
-	else
-		touchpadEnabled = true
-		return "synclient touchpadoff=0"
-	end
-end
-
 -- END CUSTOM FUNCTIONS HERE
 
 -- @DOC_LAYOUT@
@@ -546,10 +534,6 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen } },
-	{ rule = { class = "MPlayer" },
-	  properties = { floating = true } },
-	{ rule = { class = "pinentry" },
-	  properties = { floating = true } },
 	-- Rules for Hangouts and other Chrome extensions
 	{ rule = { instance = "knipolnnllmklapflnccelgolnpehhpl" },
 	  properties = { floating = true, } },
@@ -559,12 +543,8 @@ awful.rules.rules = {
 	  properties = {floating = true} },
 	{ rule = { instance = "chlffgpmiacpedhhbkiomidkjlcfhogd" },
 	  properties = {floating = true} },
-	{ rule = { name = "uArm Creator Dashboard" },
-	  properties = { floating = true } },
 	{ rule = { class = "Git-gui" },
 	  properties = {floating = true} },
-	{ rule = { name = "background audio visualizer" },
-	  properties = { opacity = 0.2, behind = true, skip_taskbar = true, maximized = true, sticky = true, focusable = false } },
 	{ rule = { class = "Conky" },
 	  properties = { sticky = true } },
 
@@ -596,7 +576,6 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- @DOC_DIALOG_RULE@
-    -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
@@ -675,38 +654,13 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- @DOC_BORDER@
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c)
+	c.border_color = beautiful.border_focus
+end)
+client.connect_signal("unfocus", function(c)
+	c.border_color = beautiful.border_normal
+end)
 -- }}}
-
-function spawnVisualizers()
-	spawn_and_wait("pkill -f 'background audio visualizer'")
-	for s = 1, screen.count() do
-		awful.util.spawn_with_shell("termite --title 'background audio visualizer' --config ~/.config/termite/config-transparent --exec cava")
-	end
-end
-
-function placeVisualizers()
-	local cnt = 1
-
-	for s = 1, screen.count() do
-		for v, k in ipairs(awful.client.visible(s)) do
-			if k.name == "background audio visualizer" then
-				if cnt <= screen.count() then
-					k.screen = cnt
-					cnt = cnt + 1
-				else
-					naughty.notify({text="warning, too many visualizers"})
-				end
-			end
-		end
-	end
-end
-
-function startVisualizers()
-	spawnVisualizers()
-	placeVisualizers()
-end
 
 -- Startup programs
 
