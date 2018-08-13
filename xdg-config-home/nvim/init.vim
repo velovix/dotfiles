@@ -17,9 +17,6 @@ Plug 'alfredodeza/pytest.vim'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" Emoji support (very important)
-Plug 'junegunn/vim-emoji'
-Plug 'pocari/vim-denite-emoji'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -35,7 +32,6 @@ call plug#end()
 
 " Configure langclient
 let g:LanguageClient_serverCommands = {
-	\ 'python': ['pyls'],
 	\ 'rust': ['rls'],
 	\}
 let g:LanguageClient_autoStart = 1

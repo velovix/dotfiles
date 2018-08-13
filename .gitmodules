@@ -1,7 +1,0 @@
-[submodule "xdg-config-home/awesome/awesome.brightness-widget"]
-	path = xdg-config-home/awesome/awesome.brightness-widget
-	url = git@github.com:velovix/awesome.brightness-widget.git
-	branch = master
-[submodule "xdg-config-home/awesome/awesome.battery-widget"]
-	path = xdg-config-home/awesome/awesome.battery-widget
-	url = git@github.com:velovix/awesome.battery-widget
