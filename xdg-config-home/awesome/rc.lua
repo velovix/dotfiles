@@ -87,6 +87,10 @@ function spawn_and_wait(cmd)
 	return result
 end
 
+function lock_screen()
+	awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh")
+end
+
 -- END CUSTOM FUNCTIONS HERE
 
 -- @DOC_LAYOUT@
@@ -291,9 +295,8 @@ globalkeys = awful.util.table.join(
 	end ),
 
 	-- Lock key
-	awful.key({}, "F12", function()
-		awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh)")
-	end ),
+	awful.key({ modkey, "Shift"   }, "l", lock_screen,
+			  {description = "Lock the screen", group = "launcher"}),
 
 	-- Volume control keys
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -371,10 +374,6 @@ globalkeys = awful.util.table.join(
 			  {description = "increase master width factor", group = "layout"}),
 	awful.key({ modkey,		   }, "Left",	 function () awful.tag.incmwfact(-0.05)		  end,
 			  {description = "decrease master width factor", group = "layout"}),
-	awful.key({ modkey, "Shift"   }, "h",	 function () awful.tag.incnmaster( 1, nil, true) end,
-			  {description = "increase the number of master clients", group = "layout"}),
-	awful.key({ modkey, "Shift"   }, "l",	 function () awful.tag.incnmaster(-1, nil, true) end,
-			  {description = "decrease the number of master clients", group = "layout"}),
 	awful.key({ modkey, "Control" }, "h",	 function () awful.tag.incncol( 1, nil, true)	end,
 			  {description = "increase the number of columns", group = "layout"}),
 	awful.key({ modkey, "Control" }, "l",	 function () awful.tag.incncol(-1, nil, true)	end,
