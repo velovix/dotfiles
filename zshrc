@@ -1,3 +1,7 @@
+# If not running interactively, don't do anything. Avoids running this when
+# running a zsh script.
+[[ -o interactive ]] || return
+
 mkdir -p ~/sh
 
 # Install antigen if necessary
