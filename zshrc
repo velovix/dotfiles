@@ -93,3 +93,7 @@ if [ -d "/usr/local/cuda/lib64" ]; then
 fi
 
 export PATH=$PATH:~/go/bin
+
+chpwd() {
+    ls --color=auto
+}
