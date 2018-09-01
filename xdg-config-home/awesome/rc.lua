@@ -672,6 +672,8 @@ run_once("sleep 2 && nm-applet")
 run_once("blueberry-tray")
 -- Start pasystray
 run_once("pasystray")
+-- Start cbatticon
+run_once("cbatticon")
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
