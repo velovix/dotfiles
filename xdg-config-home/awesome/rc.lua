@@ -83,12 +83,47 @@ end
 function spawn_and_wait(cmd)
 	local prog = io.popen(cmd)
 	local result = prog:read('*all')
-	prog:close()
-	return result
+	local info = {prog:close()}
+	return {result, info[3]}
 end
 
 function lock_screen()
 	awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh")
+end
+
+function adjust_brightness(amount)
+	local path = "/sys/class/backlight/"
+	local name = ""
+
+	local rc = spawn_and_wait("[ -d " .. path .. "intel_backlight ]")[2]
+	if rc == 0 then
+		name = "intel_backlight"
+	else
+		local rc = spawn_and_wait("[ -d " .. path .. "acpi_backlight ]")[2]
+		if rc == 0 then
+			name = "acpi_backlight"
+		end
+	end
+
+	path = path .. name
+
+	if name ~= "" then
+		local max_brightness = spawn_and_wait(
+			"cat " .. path .. "/max_brightness")[1]
+		max_brightness = tonumber(max_brightness)
+		local curr_brightness = spawn_and_wait(
+			"cat " .. path .. "/brightness")[1]
+		curr_brightness = tonumber(curr_brightness)
+
+		local new_brightness = curr_brightness + (amount * (max_brightness / 100))
+		local result = spawn_and_wait("echo " ..
+			string.format("%i", new_brightness) ..
+			" > " .. path .. "/brightness")
+	else
+		naughty.notify({ preset = naughty.config.presets.normal,
+						 title = "Brightness Adjustment Error",
+						 text = "Your device is not equipped with a backlight " .. rc})
+	end
 end
 
 -- END CUSTOM FUNCTIONS HERE
@@ -302,9 +337,16 @@ globalkeys = awful.util.table.join(
 	awful.key({}, "XF86AudioRaiseVolume", function()
 		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%")
 	end),
-
 	awful.key({}, "XF86AudioLowerVolume", function()
 		awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -5%")
+	end),
+
+	-- Brightness control keys
+	awful.key({}, "XF86MonBrightnessUp", function()
+		adjust_brightness(5)
+	end),
+	awful.key({}, "XF86MonBrightnessDown", function()
+		adjust_brightness(-5)
 	end),
 	
 	awful.key({}, "Num_Lock",
@@ -662,18 +704,17 @@ end)
 
 -- Spawn my monitor background checker
 awful.util.spawn_with_shell("systemctl --user start monitor-checker.service")
--- Spawn Redshift
-run_once("redshift-gtk -l 33.2968875:-111.6839589")
 -- Spawn Slack
 run_once("slack")
--- Spawn Network Manager
+
+-- Spawn applets/widgets/whatever
+run_once("redshift-gtk -l 33.2968875:-111.6839589")
 run_once("sleep 2 && nm-applet")
--- Spawn Blueberry
 run_once("blueberry-tray")
--- Start pasystray
 run_once("pasystray")
--- Start cbatticon
 run_once("cbatticon")
+run_once("blueman-applet")
+
 -- Start autolock
 awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
