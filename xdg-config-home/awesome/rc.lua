@@ -122,7 +122,7 @@ function adjust_brightness(amount)
 	else
 		naughty.notify({ preset = naughty.config.presets.normal,
 						 title = "Brightness Adjustment Error",
-						 text = "Your device is not equipped with a backlight " .. rc})
+						 text = "Your device is not equipped with a backlight" })
 	end
 end
 
