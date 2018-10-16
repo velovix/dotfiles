@@ -1,12 +1,11 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go', { 'tag': 'v1.13' }
+" TODO(velovix): Enable when Go tooling has better module support
+" Plug 'fatih/vim-go', { 'tag': 'v1.18' }
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -25,21 +24,12 @@ Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go'
+" TODO(velovix): Enable when there exists a Go code completion solution with
+" module support
+" Plug 'zchee/deoplete-go'
 Plug 'Shougo/echodoc.vim'
 
 call plug#end()
-
-" Configure langclient
-let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rls'],
-	\}
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_selectionUI = "location-list"
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-command LCrename :call LanguageClient_textDocument_rename()<CR>
-command LCrefs :call LanguageClient_textDocument_references()<CR>
 
 " Turn off guicursor in terminal
 set guicursor=
