@@ -4,8 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-" TODO(velovix): Enable when Go tooling has better module support
-" Plug 'fatih/vim-go', { 'tag': 'v1.18' }
+Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -24,9 +23,7 @@ Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" TODO(velovix): Enable when there exists a Go code completion solution with
-" module support
-" Plug 'zchee/deoplete-go'
+Plug 'zchee/deoplete-go'
 Plug 'Shougo/echodoc.vim'
 
 call plug#end()
