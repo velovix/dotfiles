@@ -12,6 +12,7 @@ Plug 'mileszs/ack.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
 Plug 'alfredodeza/pytest.vim'
+Plug 'reaysawa/auto-pairs'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
