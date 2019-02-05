@@ -11,7 +11,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
-Plug 'alfredodeza/pytest.vim'
 Plug 'reaysawa/auto-pairs'
 
 " Denite
@@ -24,10 +23,25 @@ Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go'
+"Plug 'zchee/deoplete-go'
 Plug 'Shougo/echodoc.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+	\ 'branch': 'next',
+	\ 'do': 'bash install.sh',
+	\ }
 
 call plug#end()
+
+" Set up LSP stuff
+let g:LanguageClient_serverCommands = {
+       \ 'go': ['gopls']
+       \ }
+" Turn off some vim-go features to play nicely with gopls
+let g:go_def_mapping_enabled = 0
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Turn off guicursor in terminal
 set guicursor=
