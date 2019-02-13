@@ -697,8 +697,6 @@ end)
 
 -- Startup programs
 
--- Spawn my monitor background checker
-awful.util.spawn_with_shell("systemctl --user start monitor-checker.service")
 -- Spawn Slack
 run_once("slack")
 
