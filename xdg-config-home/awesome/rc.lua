@@ -88,7 +88,7 @@ function spawn_and_wait(cmd)
 end
 
 function lock_screen()
-	awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh")
+	awful.util.spawn_with_shell("xscreensaver-command -lock")
 end
 
 function adjust_brightness(amount)
@@ -708,9 +708,10 @@ run_once("pasystray")
 run_once("cbatticon")
 run_once("blueman-applet")
 
--- Start autolock
-awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
 run_once("compton --config ~/.config/compton.conf -b")
+
+-- Start xscreensaver
+awful.util.spawn_with_shell("xscreensaver -no-splash")
 
 -- }}}
