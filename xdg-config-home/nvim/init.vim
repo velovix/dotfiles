@@ -4,7 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go', { 'tag': 'v1.19' }
+Plug 'fatih/vim-go', { 'branch': 'master' }
 Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -23,25 +23,10 @@ Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-go'
+Plug 'zchee/deoplete-go'
 Plug 'Shougo/echodoc.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-	\ 'branch': 'next',
-	\ 'do': 'bash install.sh',
-	\ }
 
 call plug#end()
-
-" Set up LSP stuff
-let g:LanguageClient_serverCommands = {
-       \ 'go': ['gopls']
-       \ }
-" Turn off some vim-go features to play nicely with gopls
-let g:go_def_mapping_enabled = 0
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Turn off guicursor in terminal
 set guicursor=
@@ -152,6 +137,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_def_mode='gopls'
 
 " Enable spellcheck
 set spell spelllang=en_us
