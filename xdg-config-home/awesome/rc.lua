@@ -88,7 +88,7 @@ function spawn_and_wait(cmd)
 end
 
 function lock_screen()
-	awful.util.spawn_with_shell("(sh ~/dotfiles/sh/lock.sh")
+	awful.util.spawn_with_shell("xscreensaver-command -lock")
 end
 
 function adjust_brightness(amount)
@@ -476,11 +476,6 @@ clientkeys = awful.util.table.join(
 			  {description = "move to screen", group = "client"}),
 	awful.key({ modkey,		   }, "t",	  function (c) c.ontop = not c.ontop			end,
 			  {description = "toggle keep on top", group = "client"}),
-	awful.key({ modkey,		   }, "=",
-		function (c)
-			awful.util.spawn_with_shell("systemctl --user start monitor-checker.service")
-		end,
-		{description = "search for new monitors", group = "client"}),
 	awful.key({ modkey,		   }, "n",
 		function (c)
 			-- The client currently has the input focus, so it cannot be
@@ -702,8 +697,6 @@ end)
 
 -- Startup programs
 
--- Spawn my monitor background checker
-awful.util.spawn_with_shell("systemctl --user start monitor-checker.service")
 -- Spawn Slack
 run_once("slack")
 
@@ -715,9 +708,10 @@ run_once("pasystray")
 run_once("cbatticon")
 run_once("blueman-applet")
 
--- Start autolock
-awful.util.spawn_with_shell("xautolock -time 10 -locker sh ~/dotfiles/sh/lock.sh")
 -- Start compositor
 run_once("compton --config ~/.config/compton.conf -b")
+
+-- Start xscreensaver
+awful.util.spawn_with_shell("xscreensaver -no-splash")
 
 -- }}}

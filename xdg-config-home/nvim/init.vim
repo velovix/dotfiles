@@ -23,7 +23,6 @@ Plug 'icymind/NeoSolarized'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-go'
 Plug 'Shougo/echodoc.vim'
 
 " React and Javascript
@@ -37,9 +36,7 @@ call plug#end()
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+call plug#end()
 
 " Turn off guicursor in terminal
 set guicursor=
@@ -101,7 +98,7 @@ nnoremap <C-j> 10j
 
 " Deoplete setup
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = "omnifunc"
+call g:deoplete#custom#option('omni_patterns', {'go': '[^. *\t]\.\w*'})
 inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
 function! s:smart_cr()
 	return deoplete#mappings#smart_close_popup() . "\<CR>"
