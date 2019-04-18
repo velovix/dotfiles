@@ -7,7 +7,6 @@ ln -s $PWD/xdg-config-home/awesome $HOME/.config/awesome
 ln -s $PWD/xdg-config-home/compton.conf $HOME/.config/compton.conf
 ln -s $PWD/xdg-config-home/kitty $HOME/.config/kitty
 ln -s $PWD/xdg-config-home/lxterminal $HOME/.config/lxterminal
-ln -s $PWD/xdg-config-home/systemd $HOME/.config/systemd
 ln -s $PWD/xdg-config-home/pacman $HOME/.config/pacman
 ln -s $PWD/sh $HOME/sh
 
