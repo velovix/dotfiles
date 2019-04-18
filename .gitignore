@@ -4,3 +4,5 @@ xdg-config-home/nvim/spell/
 xdg-config-home/awesome/brightness-widget.lua
 xdg-config-home/awesome/volume-widget.lua
 cached.json
+sh/antigen/
+sh/z/
