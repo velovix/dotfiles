@@ -701,9 +701,7 @@ end)
 run_once("slack")
 
 -- Spawn applets/widgets/whatever
-run_once("redshift-gtk -l 33.2968875:-111.6839589")
 run_once("sleep 2 && nm-applet")
-run_once("blueberry-tray")
 run_once("pasystray")
 run_once("cbatticon")
 run_once("blueman-applet")
