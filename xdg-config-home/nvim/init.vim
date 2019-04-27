@@ -5,13 +5,15 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'branch': 'master' }
-Plug 'alvan/vim-closetag'
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
-Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
 Plug 'reaysawa/auto-pairs'
+Plug 'autozimu/LanguageClient-neovim', {
+	\ 'branch': 'next',
+	\ 'do': 'bash install.sh',
+	\ }
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -32,6 +34,8 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
 
+autocmd BufReadPost *.rs setlocal filetype=rust
+
 " Prettier configuration
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
@@ -45,6 +49,13 @@ set guicursor=
 syntax on
 set number
 set scrolloff=10
+
+" Language client configuration
+let g:LanguageClient_serverCommands = {
+	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ }
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 
 " Set up Ack
 if executable('ag')
