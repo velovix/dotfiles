@@ -19,8 +19,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Theming
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'icymind/NeoSolarized'
 
 " Autocomplete
@@ -149,8 +148,11 @@ let g:tex_flavor='latex'
 " Multi-file configuration
 set hidden
 
-" Airline configuration
+" Lightline configuration
 set laststatus=2 " Turn on the status bar at all times
+let g:lightline = {
+      \ 'colorscheme': '16color',
+      \ }
 
 " vim-go configuration
 let g:go_fmt_command = "goimports" " Run goimports on save
