@@ -452,7 +452,7 @@ globalkeys = awful.util.table.join(
 			  end,
 			  {description = "lua execute prompt", group = "awesome"}),
 	-- Menubar
-	awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show drun -theme solarized -font 'hack 10'") end,
+	awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show drun -theme ~/.config/rofi/solarized_simple.rasi -font 'hack 10'") end,
 			  {description = "show the menubar", group = "launcher"}),
 	-- Emoji picker
 	awful.key({ modkey }, "e", function() awful.util.spawn_with_shell("bash dotfiles/sh/rofi-emoji.sh") end,
