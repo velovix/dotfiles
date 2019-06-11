@@ -44,7 +44,7 @@ end
 -- {{{ Variable definitions
 -- @DOC_LOAD_THEME@
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/paperlike/theme.lua")
+beautiful.init("~/.config/awesome/solarized/theme.lua")
 
 -- Fix bug with large notifications
 -- TODO(velovix): Use this when Awesome 4.3 is out
@@ -257,7 +257,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	local tagNames = { "1", "2", "3", "4", "5", "6" }
+	local tagNames = { "🌎", "📝", "🖥️", "🎨", "🕴️" }
 	awful.tag(tagNames, s, awful.layout.layouts[2])
 	for _, v in pairs(tagNames) do
 		local tag = awful.tag.find_by_name(s, v)
@@ -303,7 +303,8 @@ awful.screen.connect_for_each_screen(function(s)
 			s.mytaglist,
 			s.mypromptbox,
 		},
-		s.mytasklist, -- Middle widget
+		myseparator,
+		--s.mytasklist, -- Middle widget
 		rightWidgets,
 	}
 end)
