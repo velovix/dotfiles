@@ -4,16 +4,11 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go', { 'branch': 'master' }
 Plug 'danro/rename.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'LnL7/vim-nix'
 Plug 'reaysawa/auto-pairs'
-Plug 'autozimu/LanguageClient-neovim', {
-	\ 'branch': 'next',
-	\ 'do': 'bash install.sh',
-	\ }
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -26,6 +21,7 @@ Plug 'icymind/NeoSolarized'
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 " React and Javascript
 Plug 'pangloss/vim-javascript'
@@ -49,13 +45,6 @@ set guicursor=
 syntax on
 set number
 set scrolloff=10
-
-" Language client configuration
-let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-	\ }
-let g:LanguageClient_autoStart = 1
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 
 " Set up Ack
 if executable('ag')
