@@ -19,7 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'icymind/NeoSolarized'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
@@ -37,6 +37,9 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
 call plug#end()
+
+" coc.nvim configuration
+autocmd BufWritePre *.go :call CocAction("format")
 
 " Turn off guicursor in terminal
 set guicursor=
@@ -97,12 +100,12 @@ nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
 " Deoplete setup
-let g:deoplete#enable_at_startup = 1
-call g:deoplete#custom#option('omni_patterns', {'go': '[^. *\t]\.\w*'})
-inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
-function! s:smart_cr()
-	return deoplete#mappings#smart_close_popup() . "\<CR>"
-endfunction
+"let g:deoplete#enable_at_startup = 1
+"call g:deoplete#custom#option('omni_patterns', {'go': '[^. *\t]\.\w*'})
+"inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
+"function! s:smart_cr()
+	"return deoplete#mappings#smart_close_popup() . "\<CR>"
+"endfunction
 set shortmess+=c " Makes Omnicomplete quiet in the status bar
 set noshowmode
 
