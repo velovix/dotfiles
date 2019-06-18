@@ -13,3 +13,5 @@ ln -s $PWD/sh $HOME/sh
 
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/direnvrc $HOME/.direnvrc
+
+ln -s $PWD/desktop-files/nvim-qt.desktop $HOME/.local/share/applications/.
