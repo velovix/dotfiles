@@ -11,7 +11,7 @@ Plug 'LnL7/vim-nix'
 Plug 'reaysawa/auto-pairs'
 
 " Denite
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', {'tag': '*', 'do': ':UpdateRemotePlugins'}
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -39,7 +39,14 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 call plug#end()
 
 " coc.nvim configuration
-autocmd BufWritePre *.go :call CocAction("format")
+" Run goimports on save for Go files
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" Map various cool Coc functionality
+autocmd FileType go nmap <silent> gd <Plug>(coc-definition)
+autocmd FileType go nmap <silent> gr <Plug>(coc-references)
+autocmd FileType go nnoremap <silent> K :call CocAction('doHover')
+autocmd FileType go nmap <Leader>rn <Plug>(coc-rename)
+autocmd FileType go nnoremap <Leader>d :CocList diagnostics<CR>
 
 " Turn off guicursor in terminal
 set guicursor=
@@ -71,7 +78,6 @@ let mapleader = "\<Space>"
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>v :vsplit<CR>
-nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>w <C-w>
 nnoremap <Leader>f :Ack!<Space>
 nnoremap <Leader>p :Denite file_rec<CR>
