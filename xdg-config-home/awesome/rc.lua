@@ -263,6 +263,8 @@ awful.screen.connect_for_each_screen(function(s)
 		local tag = awful.tag.find_by_name(s, v)
 		tag.gap = 15
 		tag.gap_single_client = true
+		tag.column_count = 2
+		tag.master_width_factor = 0.33
 	end
 
 	-- Create a promptbox for each screen
