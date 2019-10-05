@@ -19,9 +19,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'icymind/NeoSolarized'
 
 " Autocomplete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': './install.sh'}
 
 " React and Javascript
 Plug 'pangloss/vim-javascript'
@@ -29,8 +28,6 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
-
-autocmd BufReadPost *.rs setlocal filetype=rust
 
 " Prettier configuration
 let g:prettier#autoformat = 0
@@ -80,24 +77,45 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>w <C-w>
 nnoremap <Leader>f :Ack!<Space>
-nnoremap <Leader>p :Denite file_rec<CR>
-nnoremap <Leader>b :Denite buffer<CR>
-nnoremap <Leader>d :Denite decls<CR>
+nnoremap <Leader>p :Denite file/rec -start-filter<CR>
+nnoremap <Leader>b :Denite buffer -start-filter<CR>
 
 " Set up Denite
-call denite#custom#map(
-    \ 'insert',
-    \ '<Down>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap')
-call denite#custom#map(
-    \ 'insert',
-    \ '<Up>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap')
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-    \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min*', 'img/', 'fonts/'])
+" Define denite mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> <Esc>
+  \ denite#do_map('quit')
+endfunction
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
+"call denite#custom#map(
+    "\ 'insert',
+    "\ '<Down>',
+    "\ '<denite:move_to_next_line>',
+    "\ 'noremap')
+"call denite#custom#map(
+    "\ 'insert',
+    "\ '<Up>',
+    "\ '<denite:move_to_previous_line>',
+    "\ 'noremap')
+"call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+    "\ [ '.git/', '.ropeproject/', '__pycache__/',
+    "\   'venv/', 'images/', '*.min*', 'img/', 'fonts/'])
 
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
