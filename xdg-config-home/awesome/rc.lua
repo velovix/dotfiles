@@ -126,6 +126,32 @@ function adjust_brightness(amount)
 	end
 end
 
+-- Set the current window to be floating, 1920x1080, and in the middle of the
+-- current screen.
+function fit_to_middle_1080p()
+	if client.focus == nil then
+		naughty.notify({
+			title = "Fit to Middle",
+			text = "No client is focused so no window will be fit to middle."
+		})
+		return
+	end
+
+	naughty.notify({
+		title = "Fit to Middle",
+		text = "Okay, fitting a window to middle..."
+	})
+
+	local current_screen = awful.screen.focused()
+
+	client.focus.floating = true
+	client.focus:geometry({
+		x = (current_screen.geometry.width / 2) - (1920 / 2),
+		y = (current_screen.geometry.height / 2) - (1080 / 2),
+		width = 1920,
+		height = 1080 })
+end
+
 -- END CUSTOM FUNCTIONS HERE
 
 -- @DOC_LAYOUT@
@@ -458,7 +484,10 @@ globalkeys = awful.util.table.join(
 			  {description = "show the menubar", group = "launcher"}),
 	-- Emoji picker
 	awful.key({ modkey }, "e", function() awful.util.spawn_with_shell("bash dotfiles/sh/rofi-emoji.sh") end,
-			  {description = "brings up an emoji picker", group = "extra"})
+			  {description = "brings up an emoji picker", group = "extra"}),
+	
+	-- Fit to middle at 1920x1080
+	awful.key({ modkey, "Control", "Shift" }, "m", fit_to_middle_1080p)
 )
 
 -- @DOC_CLIENT_KEYBINDINGS@
