@@ -735,7 +735,7 @@ run_once("slack")
 -- Spawn applets/widgets/whatever
 run_once("sleep 2 && nm-applet")
 run_once("pasystray")
-run_once("cbatticon")
+run_once("xfce4-power-manager")
 run_once("blueman-applet")
 
 -- Start compositor
