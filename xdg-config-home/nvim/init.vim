@@ -178,3 +178,5 @@ let g:go_def_mode='gopls'
 
 " Enable spellcheck
 set spell spelllang=en_us
+
+set termguicolors
