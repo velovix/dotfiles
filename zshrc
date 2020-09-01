@@ -73,9 +73,13 @@ if [ "$TERM" = "linux" ]; then
     clear # against bg artifacts
 fi
 
+export UBUNTU_VIRTUALENVWRAPPER="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
+
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 if hash virtualenvwrapper.sh 2>/dev/null; then
 	source virtualenvwrapper.sh
+elif [[ -f "$UBUNTU_VIRTUALENVWRAPPER" ]]; then
+	source "$UBUNTU_VIRTUALENVWRAPPER"
 else
 	echo "Warning: virtualenvwrapper is not installed"
 fi
