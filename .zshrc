@@ -2,22 +2,22 @@
 # running a zsh script.
 [[ -o interactive ]] || return
 
-mkdir -p ~/sh
+mkdir -p ~/.zsh_scripts
 
 # Install antigen if necessary
-if [ ! -d ~/sh/antigen ]; then
+if [ ! -d ~/.zsh_scripts/antigen ]; then
 	echo "Installing antigen..."
-	git clone https://github.com/zsh-users/antigen ~/sh/antigen
+	git clone https://github.com/zsh-users/antigen ~/.zsh_scripts/antigen
 fi
 
 # Install z if necessary
-if [ ! -d ~/sh/z ]; then
+if [ ! -d ~/.zsh_scripts/z ]; then
 	echo "Installing z..."
-	git clone https://github.com/rupa/z ~/sh/z
+	git clone https://github.com/rupa/z ~/.zsh_scripts/z
 fi
 
 # Turn on antigen
-source ~/sh/antigen/antigen.zsh
+source ~/.zsh_scripts/antigen/antigen.zsh
 
 # Load the oh-my-zsh core library
 antigen use oh-my-zsh
