@@ -39,13 +39,6 @@ antigen bundle robbyrussell/oh-my-zsh plugins/z
 # We're finished making changes
 antigen apply
 
-# Turn on direnv
-if hash direnv 2>/dev/null; then
-	eval "$(direnv hook zsh)"
-else
-	echo "Warning: direnv is not installed"
-fi
-
 # Use trash-cli instead of rm
 if hash trash 2>/dev/null; then
 	alias rm=trash
