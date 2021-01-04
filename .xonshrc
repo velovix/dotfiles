@@ -1,0 +1,3 @@
+# {env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR}
+$PROMPT = '{env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_WHITE}: {BLUE}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{prompt_end}{NO_COLOR} '
+
