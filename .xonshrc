@@ -1,3 +1,26 @@
-# {env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR}
-$PROMPT = '{env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_WHITE}: {BLUE}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{prompt_end}{NO_COLOR} '
+import shutil
+
+$PROMPT = "{env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_WHITE}: {BLUE}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR} 🐚\n{BOLD_BLUE}{prompt_end}{NO_COLOR} "
+
+# Standard user-level executable location
+$PATH.append("~/.local/bin")
+# Executables installed with `go get`
+$PATH.append("~/go/bin")
+# A local serverless installation
+$PATH.append("~/.serverless/bin/")
+
+if shutil.which("nvim"):
+    $EDITOR = "nvim"
+else:
+    $EDITOR = "vi"
+
+if shutil.which("trash"):
+    aliases["rm"] = "trash"
+else:
+    print("Warning: trash-cli is not installed")
+ 
+xontrib load prompt_ret_code
+
+$AOTU_WEBSITE_STAGE="tyler"
+$GOPATH="~/go"
 
