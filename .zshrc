@@ -89,7 +89,13 @@ if [ -d "/usr/local/cuda/lib64" ]; then
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 fi
 
+alias docker-killall='docker container stop $(docker container ls -aq) && docker container rm $(docker container ls -aq)'
+alias bf='brainframe'
+alias bfc='brainframe compose'
+
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin:~/.local/bin
+export PATH=$PATH:~/.serverless/bin
 
 chpwd() {
     ls --color=auto

@@ -21,6 +21,5 @@ else:
  
 xontrib load prompt_ret_code
 
-$AOTU_WEBSITE_STAGE="tyler"
 $GOPATH="~/go"
 
