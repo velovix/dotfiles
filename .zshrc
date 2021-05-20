@@ -92,6 +92,7 @@ fi
 alias docker-killall='docker container stop $(docker container ls -aq) && docker container rm $(docker container ls -aq)'
 alias bf='brainframe'
 alias bfc='brainframe compose'
+alias grepnt="grep --invert-match"
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin:~/.local/bin
