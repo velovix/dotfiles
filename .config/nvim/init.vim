@@ -5,45 +5,20 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'danro/rename.vim'
-Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mileszs/ack.vim'
 Plug 'LnL7/vim-nix'
 Plug 'reaysawa/auto-pairs'
-
-" Denite
-Plug 'Shougo/denite.nvim', {'tag': '*', 'do': ':UpdateRemotePlugins'}
 
 " Theming
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'icymind/NeoSolarized'
 
-" Autocomplete
-Plug 'Shougo/echodoc.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': './install.sh'}
-
 " React and Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
-
-" Prettier configuration
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
-
-call plug#end()
-
-" coc.nvim configuration
-" Run goimports on save for Go files
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-" Map various cool Coc functionality
-autocmd FileType go nmap <silent> gd <Plug>(coc-definition)
-autocmd FileType go nmap <silent> gr <Plug>(coc-references)
-autocmd FileType go nnoremap <silent> K :call CocAction('doHover')
-autocmd FileType go nmap <Leader>rn <Plug>(coc-rename)
-autocmd FileType go nnoremap <Leader>d :CocList diagnostics<CR>
 
 " Turn off guicursor in terminal
 set guicursor=
@@ -80,56 +55,12 @@ nnoremap <Leader>f :Ack!<Space>
 nnoremap <Leader>p :Denite file/rec -start-filter<CR>
 nnoremap <Leader>b :Denite buffer -start-filter<CR>
 
-" Set up Denite
-" Define denite mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-endfunction
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-endfunction
-"call denite#custom#map(
-    "\ 'insert',
-    "\ '<Down>',
-    "\ '<denite:move_to_next_line>',
-    "\ 'noremap')
-"call denite#custom#map(
-    "\ 'insert',
-    "\ '<Up>',
-    "\ '<denite:move_to_previous_line>',
-    "\ 'noremap')
-"call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-    "\ [ '.git/', '.ropeproject/', '__pycache__/',
-    "\   'venv/', 'images/', '*.min*', 'img/', 'fonts/'])
-
 " Arrow keys for fast scrolling
 nnoremap <Up> 10k
 nnoremap <C-k> 10k
 nnoremap <Down> 10j
 nnoremap <C-j> 10j
 
-" Deoplete setup
-"let g:deoplete#enable_at_startup = 1
-"call g:deoplete#custom#option('omni_patterns', {'go': '[^. *\t]\.\w*'})
-"inoremap <silent> <CR> <C-r>=<SID>smart_cr()<CR>
-"function! s:smart_cr()
-	"return deoplete#mappings#smart_close_popup() . "\<CR>"
-"endfunction
 set shortmess+=c " Makes Omnicomplete quiet in the status bar
 set noshowmode
 
@@ -167,14 +98,6 @@ set hidden
 
 " Airline configuration
 set laststatus=2 " Turn on the status bar at all times
-
-" vim-go configuration
-let g:go_fmt_command = "goimports" " Run goimports on save
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_def_mode='gopls'
 
 " Enable spellcheck
 set spell spelllang=en_us
