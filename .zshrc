@@ -35,6 +35,7 @@ antigen bundle git
 antigen bundle robbyrussell/oh-my-zsh plugins/extract
 antigen bundle robbyrussell/oh-my-zsh plugins/golang
 antigen bundle robbyrussell/oh-my-zsh plugins/z
+antigen bundle zsh-users/zsh-autosuggestions
 
 # We're finished making changes
 antigen apply
