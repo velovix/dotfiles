@@ -1,12 +1,8 @@
 " Start vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
 Plug 'danro/rename.vim'
-Plug 'mileszs/ack.vim'
-Plug 'LnL7/vim-nix'
 Plug 'reaysawa/auto-pairs'
 
 " Theming
